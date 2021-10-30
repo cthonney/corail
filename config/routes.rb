@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :properties do
     resources :spot, only: [:new, :create, :show, :edit, :update, :destroy, :index, :indexProperty]
   end
+
+  resources :chatrooms, only: :show
 end
