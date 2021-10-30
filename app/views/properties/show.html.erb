@@ -1,0 +1,10 @@
+<h1>Your Property</h1>
+
+<h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.location %></h2>
+<p><%= @property.price %></p>
+<p><%= @property.living_space %></p>
+<p><%= @property.location %></p>
+
+<%= link_to 'Edit', edit_property_path %> |
+<%= link_to 'Delete', @property, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', properties_path %>
