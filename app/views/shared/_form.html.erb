@@ -1,9 +1,9 @@
 <%= simple_form_for @property do |f| %>
   <div class="form-inputs">
-    <%= f.input :type,
+    <%= f.input :property_type,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "Type" }%>
+                input_html: { autocomplete: "Type de bien" }%>
     <%= f.input :location,
                 required: true,
                 input_html: { autocomplete: "Location" } %>
