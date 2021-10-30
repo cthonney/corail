@@ -1,18 +1,18 @@
 class PropertiesController < ApplicationController
   def index
-    @properties = property.all
+    @properties = Property.all
   end
 
   def show
-    @property = property.find(params[:id])
+    @property = Property.find(params[:id])
   end
 
   def new
-    @property = property.new # needed to instantiate the form_for
+    @property = Property.new # needed to instantiate the form_for
   end
 
   def create
-    @property = property.new(property_params)
+    @property = Property.new(property_params)
     @property.user_id = current_user.id
     @property.save
 
@@ -22,18 +22,18 @@ class PropertiesController < ApplicationController
   end
 
   def edit
-    @property = property.find(params[:id])
+    @property = Property.find(params[:id])
   end
 
   def update
-    @property = property.find(params[:id])
+    @property = Property.find(params[:id])
     @property.update(property_params)
 
     redirect_to property_path(@property)
   end
 
   def destroy
-    @property = property.find(params[:id])
+    @property = Property.find(params[:id])
     @property.destroy
 
     # no need for app/views/restaurants/destroy.html.erb

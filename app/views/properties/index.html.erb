@@ -1,9 +1,9 @@
-<h2>Qu'est ce que vous attendez pour ajouter votre spot?</h2>
+<h2>Qu'est ce que vous attendez pour ajouter votre propriété?</h2>
 
-<%= link_to 'New Spot', new_spot_path, class:"btn btn-info btn-lg" %>
-
-<% @spots.each do |spot| %>
-  <%= link_to 'Show', spot, class: "btn btn-outline-secondary btn-sm"%>
-  <%= link_to 'Edit', edit_spot_path(spot), class: "btn btn-outline-secondary btn-sm"%>
-  <%= link_to '', spot, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm"  %>
+<% @properties.each do |property| %>
+  <h2><%= property.title %></h2>
+  <h2><%= property.title %></h2>
+  <h2><%= property.title %></h2>
+  <h2><%= property.title %></h2>
+  <h2><%= property.title %></h2>
 <% end %>
