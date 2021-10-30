@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :spot, only: [:new, :create, :show, :edit, :update, :destroy, :index, :indexProperty]
   end
 
-  resources :chatrooms, only: :show
+  resources :chat_rooms, only: :show do
+    resources :messages, only: :create
+  end
 end
