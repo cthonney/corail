@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_080812) do
+ActiveRecord::Schema.define(version: 2021_10_30_084528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(version: 2021_10_30_080812) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slot_id"], name: "index_bookings_on_slot_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["property_id"], name: "index_messages_on_property_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -71,6 +89,9 @@ ActiveRecord::Schema.define(version: 2021_10_30_080812) do
 
   add_foreign_key "bookings", "slots"
   add_foreign_key "bookings", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "properties"
+  add_foreign_key "messages", "users"
   add_foreign_key "properties", "users"
   add_foreign_key "slots", "properties"
 end
