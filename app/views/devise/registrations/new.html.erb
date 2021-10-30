@@ -15,7 +15,23 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" }%>
+    <%= f.input :surname,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "surname" }%>
+    <%= f.input :phone_number,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Phone Number" }%>
+
+   <%= f.input :photo, as: :file %>
+
   </div>
+
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
