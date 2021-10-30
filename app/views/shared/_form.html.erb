@@ -1,0 +1,29 @@
+<%= simple_form_for @property do |f| %>
+  <div class="form-inputs">
+    <%= f.input :property_type,
+                collection: ["Villa", "House", "Bungalow", "Flat"],
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Type de bien" }%>
+    <%= f.input :location,
+                required: true,
+                input_html: { autocomplete: "Location" } %>
+    <%= f.input :price,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Prix" }%>
+    <%= f.input :living_space,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Superficie intérieure" }%>
+    <%= f.input :land_surface,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Superficie extérieure" }%>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>
+
+

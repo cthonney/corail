@@ -1,0 +1,9 @@
+<h2>Qu'est ce que vous attendez pour ajouter votre propriété?</h2>
+
+<% @properties.each do |property| %>
+  <h1><%= property.property_type %> - <%= property.price %> - <%= property.location %></h1>
+  <h2><%= property.price %></h2>
+  <h2><%= property.living_space %></h2>
+  <h2><%= property.location %></h2>
+<% end %>
+
