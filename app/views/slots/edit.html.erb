@@ -1,0 +1,8 @@
+
+<h1>Edit a Slot</h1> <p>Property:<%= @slot.property.property_type %> at <%= @slot.property.location %></p> </p>
+
+<%= render 'shared/slotform', slot: @slot %>
+
+
+
+<%= link_to 'Delete', @slot,  method: :delete, data: { confirm: 'Are you sure?' } %> |

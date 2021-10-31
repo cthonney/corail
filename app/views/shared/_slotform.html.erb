@@ -1,0 +1,16 @@
+<%= simple_form_for [:property, @slot] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :date,
+                required: true,
+                autofocus: true%>
+    <%= f.input :max_visitor,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Maximum Visitor" }%>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>
+
+
