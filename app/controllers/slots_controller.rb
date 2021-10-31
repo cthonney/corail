@@ -1,4 +1,4 @@
-class SlotsController < ApplicationControlle
+class SlotsController < ApplicationController
   def index
     @slots = Slot.all
   end
@@ -13,13 +13,17 @@ class SlotsController < ApplicationControlle
 
   def new
     @slot = Slot.new
+    @slot.property = Property.find(params[:property_id])
   end
 
   def create
-    @slot = Slot.new(slot_params)
 
+
+    @slot = Slot.new(slot_params)
+    @slot.property = Property.find(params[:property_id])
     if @slot.save
-      redirect_to @slot
+      # redirect_to @property_slot_path
+      redirect_to property_path(@slot.property_id)
     else
       render 'new'
     end
@@ -33,7 +37,7 @@ class SlotsController < ApplicationControlle
     @slot = Slot.find(params[:id])
 
     if @slot.update(slot_params)
-      redirect_to @slot
+      redirect_to property_path(@slot.property_id)
     else
       render 'edit'
     end
@@ -42,8 +46,7 @@ class SlotsController < ApplicationControlle
   def destroy
     @slot = Slot.find(params[:id])
     @slot.destroy
-
-    redirect_to slots_path
+    redirect_to property_path(@slot.property_id)
   end
 
   private
