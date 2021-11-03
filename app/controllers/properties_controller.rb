@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @slots = Slot.where(property_id: params[:id])
   end
 
   def new
@@ -23,6 +24,7 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+
   end
 
   def update
