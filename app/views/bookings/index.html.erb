@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Booking date</th>
+    <th>Location</th>
+
+
+  </tr>
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.date %></td>
+      <td><%= property.location %></td>
+      <td><%= link_to 'Show', property %></td>
+
+    </tr>
+  <% end %>
+</table>
