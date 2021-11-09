@@ -18,8 +18,7 @@
     <tr>
       <td><%= slot.date %></td>
       <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
-
-    </tr>
+      <td><%= link_to "BOOK VISIT", {:controller => "booking", :action => "create"}, method: :post %>
   <% end %>
 </table>
 <br>
