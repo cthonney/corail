@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :properties do
     resources :slots, only: [:new, :create, :edit, :update, :destroy, :indexProperty]
-    resources :bookings, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :bookings, only: [:index, :new, :create, :show, :edit, :update, :destroy, :indexProperty]
   end
   resources :slots, only: [:destroy, :edit]
-  resources :bookings, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :bookings, only: [:index, :new, :create, :show, :edit, :update, :destroy, :indexProperty]
 end

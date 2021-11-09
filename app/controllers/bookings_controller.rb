@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.user_id = current_user.id
     @booking.slot_id = params[:slot_id]
+    raise
     if @booking.save
       flash[:notice] = "Booking was successfully created"
       redirect_to bookings_path
