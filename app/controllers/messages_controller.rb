@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_room = @chat_room
     @message.user = current_user
+    @message.property =
     if @message.save!
       redirect_to chat_room_path(@chat_room, anchor: "message-#{@message.id}")
     else

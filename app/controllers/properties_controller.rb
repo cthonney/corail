@@ -37,6 +37,14 @@ class PropertiesController < ApplicationController
     redirect_to properties_path
   end
 
+
+  def create_chat
+    @chat_room = ChatRoom.new
+    @property = Property.find(params[:id])
+    @chat_room.property = @property
+    redirect_to chatroomshow
+  end
+
   private
 
   def property_params
