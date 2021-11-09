@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @message = Message.find_by(user_id: current_user.id, property_id: @property.id)
     @slots = Slot.where(property_id: params[:id])
   end
 
