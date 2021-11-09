@@ -13,16 +13,12 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-  def new
+
+
+  def create
     @booking = Booking.new
     @booking.user_id = current_user.id
     @booking.slot_id = params[:slot_id]
-    @booking.time_slot = params[:time_slot]
-
-  end
-
-  def create
-    @booking = Booking.new(booking_params)
     if @booking.save
       flash[:notice] = "Booking was successfully created"
       redirect_to bookings_path
@@ -59,7 +55,5 @@ class BookingsController < ApplicationController
 
   private
 
-  def booking_params
-    params.require(:booking).permit(:time_slot, :user_id, :slot_id,)
-  end
+
 end
