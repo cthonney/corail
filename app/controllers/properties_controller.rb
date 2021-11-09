@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @message = Message.find_by(user_id: current_user.id, property_id: @property.id)
   end
 
   def new
@@ -35,14 +36,6 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     @property.destroy
     redirect_to properties_path
-  end
-
-
-  def create_chat
-    @chat_room = ChatRoom.new
-    @property = Property.find(params[:id])
-    @chat_room.property = @property
-    redirect_to chatroomshow
   end
 
   private

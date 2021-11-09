@@ -4,9 +4,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_room = @chat_room
     @message.user = current_user
-    @message.property =
+    @property = Property.find(params[:property_id])
+    @message.property = @property
     if @message.save!
-      redirect_to chat_room_path(@chat_room, anchor: "message-#{@message.id}")
+      redirect_to property_chat_room_path(@property, @chat_room, anchor: "message-#{@message.id}")
     else
       render "chat_rooms/show"
     end
