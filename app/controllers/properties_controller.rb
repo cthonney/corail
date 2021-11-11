@@ -8,6 +8,8 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     @message = Message.find_by(user_id: current_user.id, property_id: @property.id)
     @slots = Slot.where(property_id: params[:id])
+    @chat_rooms = current_user.chat_rooms.uniq
+    #@bookings_owner = current_user.bookings.uniq
   end
 
   def new

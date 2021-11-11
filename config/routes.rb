@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :properties do
-    resources :spot, only: [:new, :create, :show, :edit, :update, :destroy, :index, :indexProperty]
-    resources :slots, only: [:new, :create, :update, :indexProperty]
-    resources :bookings, only: [:index, :new, :create, :show, :edit, :update, :destroy, :indexProperty]
+    resources :slots, only: [:new, :create, :edit]
+    resources :bookings, only: [:create]
     resources :chat_rooms, only: [:create, :show] do
         resources :messages, only: [:create]
     end
@@ -13,6 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :chat_rooms, only: [:index]
-  resources :slots, only: [:destroy, :edit]
-  resources :bookings, only: [:index, :new, :create, :show, :edit, :update, :destroy, :indexProperty]
+  resources :slots, only: [:destroy]
+  resources :bookings, only: [:index, :destroy, :edit]
 end

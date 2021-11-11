@@ -30,6 +30,7 @@ class SlotsController < ApplicationController
   end
 
   def edit
+    @property = Property.find(params[:property_id])
     @slot = Slot.find(params[:id])
   end
 

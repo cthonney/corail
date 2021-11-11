@@ -1,7 +1,8 @@
 
-<h1>Edit a Slot</h1> <p>Property:<%= @slot.property.property_type %> at <%= @slot.property.location %></p> </p>
+<h1>Edit a Slot</h1>
+<p>Property:<%= @slot.property.property_type %> at <%= @slot.property.location %></p>
 
-<%= render 'shared/slotform', slot: @slot %>
+<%= render 'shared/slotform', property: @property, slot: @slot %>
 
 
 

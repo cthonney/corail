@@ -1,9 +1,9 @@
 <h1>Your Property</h1>
 
 <h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.location %></h2>
-<p><%= @property.price %></p>
-<p><%= @property.living_space %></p>
-<p><%= @property.location %></p>
+  <p><%= @property.price %></p>
+  <p><%= @property.living_space %></p>
+  <p><%= @property.location %></p>
 <br>
 <%# show slots %>
 
@@ -17,8 +17,9 @@
   <% @slots.each do |slot| %>
     <tr>
       <td><%= slot.date %></td>
-      <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
-      <td><%= link_to "BOOK VISIT", bookings_path(slot_id:slot.id), method: :post %>
+      <td><%= link_to 'Edit', edit_property_slot_path(@property, slot) %></td>
+      <td><%= link_to "BOOK VISIT", bookings_path(slot_id:slot.id), method: :post %></td>
+    </tr>
   <% end %>
 </table>
 <br>
@@ -26,9 +27,19 @@
 <%= link_to 'Edit', edit_property_path %> |
 <%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', properties_path %>
-
-<% if @message %>
-<%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
-<% else %>
-<%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
-<% end %>
+<table>
+  <% if current_user == @property.owner %>
+    <tr>
+    <% @chat_rooms.each do |chat| %>
+      <td><%= chat.title %></td>
+      <td><%= link_to "Open chatroom", property_chat_room_path(@property, chat) %></td>
+    </tr>
+    <% end %>
+  <% else %>
+    <% if @message %>
+    <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
+    <% else %>
+    <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
+    <% end %>
+  <% end %>
+</table>

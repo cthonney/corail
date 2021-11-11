@@ -2,11 +2,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user_id: current_user.id)
-
-  end
-
-  def indexProperty
-    @bookings = Booking.where(property_id: params[:id])
   end
 
   def show
