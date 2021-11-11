@@ -7,6 +7,7 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.find(params[:id])
     @property = Property.find(params[:property_id])
     @message = Message.new
+    @chat_rooms = current_user.chat_rooms.uniq
   end
 
   def create
