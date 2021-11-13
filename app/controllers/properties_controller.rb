@@ -28,7 +28,7 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
-
+    authorize @property
   end
 
   def update

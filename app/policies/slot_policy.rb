@@ -14,10 +14,10 @@ class SlotPolicy < ApplicationPolicy
   end
 
   def update?
-    record.owner == user
+    record.property.owner == user
   end
 
   def destroy?
-    record.owner == user
+    record.property.owner == user
   end
 end
