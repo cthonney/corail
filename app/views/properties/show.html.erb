@@ -27,19 +27,13 @@
 <%= link_to 'Edit', edit_property_path %> |
 <%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', properties_path %>
-<table>
-  <% if current_user == @property.owner %>
-    <tr>
-    <% @chat_rooms.each do |chat| %>
-      <td><%= chat.title %></td>
-      <td><%= link_to "Open chatroom", property_chat_room_path(@property, chat) %></td>
-    </tr>
-    <% end %>
+<br>
+<% if current_user == @property.owner %>
+  <%= link_to "Open chatroom" %>
+<% else %>
+  <% if @message %>
+  <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
   <% else %>
-    <% if @message %>
-    <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
-    <% else %>
-    <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
-    <% end %>
+  <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
   <% end %>
-</table>
+<% end %>
