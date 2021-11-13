@@ -9,26 +9,22 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-
-
   def create
-
+    @slot = Slot.find(params[:slot_id])
     @booking = Booking.new
     @booking.user_id = current_user.id
     @booking.slot_id = params[:slot_id]
+    authorize @booking
     if @booking.save
       flash[:notice] = "Booking was successfully created"
       redirect_back(fallback_location: 'something')
     else
       flash[:notice] = "Booking error!"
     end
-
   end
 
   def edit
     @booking = Booking.find(params[:id])
-
-
   end
 
   def update
@@ -39,7 +35,6 @@ class BookingsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -47,7 +42,6 @@ class BookingsController < ApplicationController
     @booking.destroy
     flash[:notice] = "Booking was successfully deleted"
     redirect_to bookings_path
-
   end
 
   private

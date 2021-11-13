@@ -9,6 +9,8 @@ class PropertiesController < ApplicationController
     @message = Message.find_by(user_id: current_user.id, property_id: @property.id)
     @slots = Slot.where(property_id: params[:id])
     @chat_rooms = current_user.chat_rooms.uniq
+    @slot = Slot.new(property: @property)
+    @booking = Booking.new(slot_id:params[:slot_id], user_id:current_user.id)
     authorize @property
   end
 

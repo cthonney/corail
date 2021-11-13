@@ -1,4 +1,4 @@
-class SlotPolicy < ApplicationPolicy
+class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,7 +6,7 @@ class SlotPolicy < ApplicationPolicy
   end
 
   def create?
-    record.property.owner == user
+    record.slot.property.owner != user
   end
 
   def show?
@@ -14,10 +14,10 @@ class SlotPolicy < ApplicationPolicy
   end
 
   def update?
-    record.property.owner == user
+    false
   end
 
   def destroy?
-    record.property.owner == user
+    record.buyer == user
   end
 end

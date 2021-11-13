@@ -3,10 +3,6 @@ class SlotsController < ApplicationController
     @slots = policy_scope(Slot)
   end
 
-  def indexProperty
-    @slots = Slot.where(property_id: params[:property_id])
-  end
-
   def show
     @slot = Slot.find(params[:id])
     authorize @slot
@@ -48,9 +44,9 @@ class SlotsController < ApplicationController
 
   def destroy
     @slot = Slot.find(params[:id])
-    authorize @slot
     @slot.destroy
     redirect_to property_path(@slot.property_id)
+    authorize @slot
   end
 
   private
