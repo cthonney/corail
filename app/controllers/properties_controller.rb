@@ -9,7 +9,7 @@ class PropertiesController < ApplicationController
     @message = Message.find_by(user_id: current_user.id, property_id: @property.id)
     @slots = Slot.where(property_id: params[:id])
     @chat_rooms = current_user.chat_rooms.uniq
-    #@bookings_owner = current_user.bookings.uniq
+    authorize @property
   end
 
   def new
@@ -33,12 +33,14 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
+    authorize @property
     @property.update(property_params)
     redirect_to property_path(@property)
   end
 
   def destroy
     @property = Property.find(params[:id])
+    authorize @property
     @property.destroy
     redirect_to properties_path
   end

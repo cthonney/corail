@@ -14,10 +14,10 @@ class PropertyPolicy < ApplicationPolicy
     end
 
     def update?
-      record.user == current_user
+      record.owner == user
     end
 
     def destroy?
-      record.user == current_user
+      record.owner == user
     end
 end
