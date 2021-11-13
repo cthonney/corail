@@ -6,9 +6,10 @@
   <p><%= @property.location %></p>
 <br>
 
-<%# if policy(@slot).destroy? %>
+<%# if @property.owner == current_user %>
+<% if policy(@slot).new? %>
   <%= link_to 'New Slot', new_property_slot_path(@property)  %>
-<%# end %>
+<% end %>
 
 <table>
   <tr>
@@ -20,10 +21,12 @@
       <td><%= slot.date %></td>
 
       <% if policy(slot).destroy? %>
-        <td><%= link_to 'Delete', edit_property_slot_path(@property, slot) %></td>
+        <td><%= link_to 'Delete', slot_path(slot), method: :delete %></td>
       <% end %>
 
+      <%# if policy(booking).destroy? %>
       <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
+      <%# end %>
     </tr>
   <% end %>
 </table>

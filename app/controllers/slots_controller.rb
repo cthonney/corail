@@ -44,9 +44,9 @@ class SlotsController < ApplicationController
 
   def destroy
     @slot = Slot.find(params[:id])
-    authorize @slot
     @slot.destroy
     redirect_to property_path(@slot.property_id)
+    authorize @slot
   end
 
   private
