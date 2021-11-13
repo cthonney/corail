@@ -1,0 +1,78 @@
+
+
+
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>My Property</h2>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Price</th>
+    <th>Living space</th>
+    <th>Location</th>
+  </tr>
+  <% @properties.each do |property| %>
+    <tr>
+      <td><%= property.property_type %></td>
+      <td><%= property.price %>MUR</td>
+      <td><%= property.living_space %>m2</td>
+      <td><%= property.location %></td>
+      <td><%= link_to 'Show', property %></td>
+    </tr>
+  <% end %>
+</table>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>My Messages</h2>
+<table>
+  <tr>
+    <% @chat_rooms.each do |chat| %>
+      <td><%= chat.title %></td>
+      <td><%= link_to "Open chatroom", property_chat_room_path(chat.messages.first.property, chat) %></td>
+    </tr>
+  <% end %>
+</table>
+  </div>
+  <div class="column" style="background-color:#ccc;">
+    <h2>My slots</h2>
+<table>
+  <tr>
+    <th>Property</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Count Booking</th>
+    <th>Details Booking</th>
+  </tr>
+  <% @slots.each do |slot| %>
+    <tr>
+      <td><%= slot.property.id %></td>
+      <td><%= slot.property.location %></td>
+      <td><%= slot.date %></td>
+      <td><%= slot.bookings.count %></td>
+      <td><%= link_to "Bookings", slot_bookings_path(slot) %></td>
+    </tr>
+  <% end %>
+</table>
+  </div>
+  <div class="column" style="background-color:#aaa;">
+  <h2>Bookings Visit</h2>
+    <table>
+  <tr>
+    <th>Property</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Show Property & Message</th>
+  </tr>
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.slot.property.id %></td>
+      <td><%= booking.slot.property.location %></td>
+      <td><%= booking.slot.date %></td>
+      <td><%= link_to "Show", property_path(booking.slot.property.id) %></td>
+
+    </tr>
+  <% end %>
+</table>
+  </div>
+</div>

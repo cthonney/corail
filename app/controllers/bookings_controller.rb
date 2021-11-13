@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @slot = Slot.find(params[:slot_id])
+    @bookings = @slot.bookings
   end
 
   def show
@@ -19,7 +20,6 @@ class BookingsController < ApplicationController
       flash[:notice] = "Booking was successfully created"
       redirect_back(fallback_location: 'something')
     else
-      render :new
       flash[:notice] = "Booking error!"
     end
 

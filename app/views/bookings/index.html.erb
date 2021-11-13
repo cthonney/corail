@@ -7,9 +7,9 @@
   </tr>
   <% @bookings.each do |booking| %>
     <tr>
-      <td><%= booking.date %></td>
-      <td><%= property.location %></td>
-      <td><%= link_to 'Show', property %></td>
+      <td><%= booking.slot.date %></td>
+      <td><%= booking.slot.property.location %></td>
+      <td><%= booking.buyer.name %></td>
 
     </tr>
   <% end %>

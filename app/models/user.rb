@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :messages
   has_many :chat_rooms, through: :properties
+  has_many :slots, through: :properties
   has_one_attached :avatar
 end

@@ -18,7 +18,7 @@
     <tr>
       <td><%= slot.date %></td>
       <td><%= link_to 'Edit', edit_property_slot_path(@property, slot) %></td>
-      <td><%= link_to "BOOK VISIT", bookings_path(slot_id:slot.id), method: :post %></td>
+      <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
     </tr>
   <% end %>
 </table>
