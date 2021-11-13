@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :chat_rooms, only: [:index]
-  resources :slots, only: [:destroy]
-  resources :bookings, only: [:index, :destroy, :edit]
+  resources :slots, only: [:destroy] do
+    resources :bookings, only: [:index]
+  end
+  resources :bookings, only: [:destroy, :edit]
 end
