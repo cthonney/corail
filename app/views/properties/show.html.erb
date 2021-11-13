@@ -5,9 +5,10 @@
   <p><%= @property.living_space %></p>
   <p><%= @property.location %></p>
 <br>
-<%# show slots %>
 
-<p><%= link_to 'New Slot', new_property_slot_path(@property)  %></p>
+<%# if policy(@slot).destroy? %>
+  <%= link_to 'New Slot', new_property_slot_path(@property)  %>
+<%# end %>
 
 <table>
   <tr>
@@ -17,7 +18,11 @@
   <% @slots.each do |slot| %>
     <tr>
       <td><%= slot.date %></td>
-      <td><%= link_to 'Edit', edit_property_slot_path(@property, slot) %></td>
+
+      <% if policy(slot).destroy? %>
+        <td><%= link_to 'Delete', edit_property_slot_path(@property, slot) %></td>
+      <% end %>
+
       <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
     </tr>
   <% end %>

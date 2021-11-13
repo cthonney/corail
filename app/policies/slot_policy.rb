@@ -6,7 +6,7 @@ class SlotPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.property.owner == user
   end
 
   def show?

@@ -3,10 +3,6 @@ class SlotsController < ApplicationController
     @slots = policy_scope(Slot)
   end
 
-  def indexProperty
-    @slots = Slot.where(property_id: params[:property_id])
-  end
-
   def show
     @slot = Slot.find(params[:id])
     authorize @slot
