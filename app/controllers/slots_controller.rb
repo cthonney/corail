@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
   def index
-    @slots = Slot.all
+    @slots = policy_scope(Slot)
   end
 
   def indexProperty
@@ -9,18 +9,19 @@ class SlotsController < ApplicationController
 
   def show
     @slot = Slot.find(params[:id])
+    authorize @slot
   end
 
   def new
     @slot = Slot.new
     @slot.property = Property.find(params[:property_id])
+    authorize @slot
   end
 
   def create
-
-
     @slot = Slot.new(slot_params)
     @slot.property = Property.find(params[:property_id])
+    authorize @slot
     if @slot.save
       # redirect_to @property_slot_path
       redirect_to property_path(@slot.property_id)
@@ -32,11 +33,12 @@ class SlotsController < ApplicationController
   def edit
     @property = Property.find(params[:property_id])
     @slot = Slot.find(params[:id])
+    authorize @slot
   end
 
   def update
     @slot = Slot.find(params[:id])
-
+    authorize @slot
     if @slot.update(slot_params)
       redirect_to property_path(@slot.property_id)
     else
@@ -46,6 +48,7 @@ class SlotsController < ApplicationController
 
   def destroy
     @slot = Slot.find(params[:id])
+    authorize @slot
     @slot.destroy
     redirect_to property_path(@slot.property_id)
   end
