@@ -18,11 +18,13 @@
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
+          <% if current_user.avatar.attached? %>
           <%= cl_image_tag(current_user.avatar.key, :transformation=>[
-  {:gravity=>"face", :height=>400, :width=>400, :crop=>"crop",},
-  {:radius=>"max"},
-  {:width=>200, :crop=>"thumb"}
-  ], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+                                                                  {:gravity=>"face", :height=>400, :width=>400, :crop=>"crop",},
+                                                                  {:radius=>"max"},
+                                                                  {:width=>200, :crop=>"thumb"}],
+                                                    class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>

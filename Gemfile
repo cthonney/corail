@@ -23,6 +23,7 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 5.1.0'
 gem 'cloudinary', '~> 1.21.0'
+gem 'pundit'
 
 
 # Use Active Storage variant
