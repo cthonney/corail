@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
 
   def index
-    @properties = Property.all
+    @properties = policy_scope(Property)
   end
 
   def show
@@ -14,13 +14,14 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+    authorize @property
   end
 
   def create
     @property = Property.new(property_params)
     @property.user_id = current_user.id
     @property.save
-
+    authorize @property
 
     redirect_to property_path(@property)
   end
