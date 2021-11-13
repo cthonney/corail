@@ -46,7 +46,7 @@
 <br>
 
 <% if current_user == @property.owner %>
-  <%= link_to "Open chatroom" %>
+  <%= link_to "Open messages for this property" %>
 <% else %>
   <% if @message %>
   <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
