@@ -8,11 +8,11 @@
 <%# show slots %>
 
 <p><%= link_to 'New Slot', new_property_slot_path(@property)  %></p>
+
 <table>
   <tr>
     <th>Date</th>
     <th>Edit</th>
-
   </tr>
   <% @slots.each do |slot| %>
     <tr>
@@ -22,12 +22,22 @@
     </tr>
   <% end %>
 </table>
+
 <br>
 <%= link_to 'New', new_property_path %> |
-<%= link_to 'Edit', edit_property_path %> |
-<%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
+
+<% if policy(@property).edit? %>
+  <%= link_to 'Edit', edit_property_path %> |
+<% end %>
+
+<% if policy(@property).destroy? %>
+  <%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+
 <%= link_to 'Back', properties_path %>
+
 <br>
+
 <% if current_user == @property.owner %>
   <%= link_to "Open chatroom" %>
 <% else %>
