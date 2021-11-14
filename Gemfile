@@ -24,6 +24,7 @@ gem 'redis', '~> 4.0'
 gem 'bootstrap', '~> 5.1.0'
 gem 'cloudinary', '~> 1.21.0'
 gem 'pundit'
+gem 'rails_admin', '~> 2.0'
 
 
 # Use Active Storage variant
