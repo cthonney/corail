@@ -19,7 +19,12 @@
       <td><%= property.living_space %>m2</td>
       <td><%= property.location %></td>
       <td><%= link_to 'Show', property %></td>
-
+      <%# Display first photo of property %>
+      <% if property.photos.empty? %>
+        <td>No photo</td>
+      <% else %>
+      <td><%= cl_image_tag(property.photos.first.key, :width => 150, :height => 100, :crop => :fill)%></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
