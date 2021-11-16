@@ -31,9 +31,9 @@ admin.avatar.attach(io: File.open("app/assets/images/avatars/avatar4.png"), file
 puts "Attached avatars to users"
 
 #Create Properties and attach them to users
-property1 = Property.create(property_type: "House", price: "100", living_space: "100", land_surface: "100", location: "Paris", latitude: "48.866667", longitude: "2.333333", parking_space: "1", pool: false, room: 4, bathroom: 5, sea_view: true, user_id: user1.id)
-property2 = Property.create(property_type: "Villa", price: "200", living_space: "100", land_surface: "100", location: "Blue-bay", latitude: "20.437257", longitude: "57.713574", parking_space: "3", pool: true, room: 3, bathroom: 2, sea_view: true, user_id: user2.id)
-property3 = Property.create(property_type: "Apartment", price: "300", living_space: "100", land_surface: "100", location: "Port Louis", latitude: "-20.166059", longitude: "57.482053", parking_space: "1", pool: false, room: 4, bathroom: 5, sea_view: true, user_id: user3.id)
+property1 = Property.create(property_type: "House", price: "100", living_space: "100", land_surface: "100", address: "Paris", latitude: "48.866667", longitude: "2.333333", parking_space: "1", pool: false, room: 4, bathroom: 5, sea_view: true, user_id: user1.id)
+property2 = Property.create(property_type: "Villa", price: "200", living_space: "100", land_surface: "100", address: "Blue-bay", latitude: "20.437257", longitude: "57.713574", parking_space: "3", pool: true, room: 3, bathroom: 2, sea_view: true, user_id: user2.id)
+property3 = Property.create(property_type: "Apartment", price: "300", living_space: "100", land_surface: "100", address: "Port Louis", latitude: "-20.166059", longitude: "57.482053", parking_space: "1", pool: false, room: 4, bathroom: 5, sea_view: true, user_id: user3.id)
 
 puts "Created #{Property.count} properties"
 
