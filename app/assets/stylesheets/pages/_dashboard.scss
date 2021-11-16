@@ -1,6 +1,15 @@
-.column {
-  float: left;
-  width: 50.00%;
+
+
+.cards-dash {
+  background: white;
+  border:coral solid 1px;
+  border-radius: 5px;
+  height: 300px;
   padding: 10px;
-  height: 350px; /* Should be removed. Only for demonstration */
+  margin:10px;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
 }
