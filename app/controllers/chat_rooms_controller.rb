@@ -6,12 +6,14 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.find(params[:id])
     @property = Property.find(params[:property_id])
+    authorize @chat_room
     @message = Message.new
     @chat_rooms = current_user.chat_rooms.uniq
   end
 
   def create
     @chat_room = ChatRoom.create!(title: current_user.name)
+    authorize @chat_room
     @property = Property.find(params[:property_id])
     redirect_to property_chat_room_path(@property, @chat_room)
   end
