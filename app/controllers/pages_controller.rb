@@ -2,6 +2,16 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @properties = policy_scope(Property)
+    @properties = Property.all
+
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude
+      }
+    end
   end
 
 
