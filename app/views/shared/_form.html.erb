@@ -20,6 +20,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Superficie extérieure" }%>
+    <%# add photos (multiple) %>
+    <%= f.file_field :photos,
+                      placeholder: 'Upload picture',
+                      multiple: true,
+                      direct_upload: true%>
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary" %>

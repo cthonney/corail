@@ -1,56 +1,69 @@
-<h1>Your Property</h1>
-
-<h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
-  <p><%= @property.price %></p>
-  <p><%= @property.living_space %></p>
-  <p><%= @property.address %></p>
-<br>
-
-<% if policy(@slot).new? %>
-  <%= link_to 'New Slot', new_property_slot_path(@property)  %>
-<% end %>
-
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Edit</th>
-  </tr>
-  <% @slots.each do |slot| %>
-    <tr>
-      <td><%= slot.date %></td>
-
-      <% if policy(slot).destroy? %>
-        <td><%= link_to 'Delete', slot_path(slot), method: :delete %></td>
+<div class="container" >
+  <div class="card-show" >
+    <div class="container" >
+      <% if @property.photos.empty? %>
+        <td>No photo</td>
+      <% else %>
+        <td><%= render 'shared/carouselshow', spot: @spot %></td>
       <% end %>
-
-      <%# if policy(@booking).create? %>
-      <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
-      <%# end %>
-    </tr>
-  <% end %>
-</table>
-
-<br>
-<%= link_to 'New', new_property_path %> |
-
-<% if policy(@property).edit? %>
-  <%= link_to 'Edit', edit_property_path %> |
-<% end %>
-
-<% if policy(@property).destroy? %>
-  <%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
-
-<%= link_to 'Back', properties_path %>
-
-<br>
-
-<% if current_user == @property.owner %>
-  <%= link_to "Open messages for this property" %>
-<% else %>
-  <% if @message %>
-  <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
-  <% else %>
-  <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
-  <% end %>
-<% end %>
+      <br>
+      <% if policy(@property).destroy? %>
+        <%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <% end %>
+      <%= link_to 'Back', properties_path, :class => "btn btn-outline-secondary btn-sm"  %>
+      <% if policy(@property).edit? %>
+        <%= link_to 'Edit', edit_property_path, :class => "btn btn-outline-secondary btn-sm" %> |
+      <% end %>
+    </div>
+    <div class="container" >
+      <h1>
+        <h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
+      </h1>
+      <i class="fas fa-map-marker"></i>
+      <p><%= @property.address %></p>
+      <br>
+      <i class="fas fa-bed"></i>
+      <p><%= @property.living_space %> m2</p>
+      <br>
+      <i class="fas fa-coins"></i>
+      <p><%= @property.price %></p>
+      <br>
+    </div>
+    <br>
+  </div>
+  <div class="row">
+    <div class="card-info col">
+      <% if current_user == @property.owner %>
+        <%= link_to "Open messages for this property" %>
+      <% else %>
+        <% if @message %>
+          <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
+        <% else %>
+          <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-info col">
+      <% if policy(@slot).new? %>
+        <%= link_to 'New Slot', new_property_slot_path(@property)  %>
+      <% end %>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Edit</th>
+        </tr>
+        <% @slots.each do |slot| %>
+          <tr>
+            <td><%= slot.date %></td>
+            <% if policy(slot).destroy? %>
+              <td><%= link_to 'Delete', slot_path(slot), method: :delete %></td>
+            <% end %>
+            <%# if policy(@booking).create? %>
+            <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
+            <%# end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
