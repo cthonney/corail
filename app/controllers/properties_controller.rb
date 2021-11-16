@@ -2,6 +2,14 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = policy_scope(Property)
+    @properties = Property.all
+
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude
+      }
   end
 
   def show
