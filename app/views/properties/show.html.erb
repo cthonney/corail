@@ -1,9 +1,9 @@
 <h1>Your Property</h1>
 
-<h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.location %></h2>
+<h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
   <p><%= @property.price %></p>
   <p><%= @property.living_space %></p>
-  <p><%= @property.location %></p>
+  <p><%= @property.address %></p>
 <br>
 
 <% if policy(@slot).new? %>
