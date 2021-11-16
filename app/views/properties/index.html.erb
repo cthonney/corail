@@ -1,25 +1,31 @@
-<h2>Qu'est ce que vous attendez pour ajouter votre propriété?</h2>
-
-<%= link_to "New property", new_property_path %>
-
-
-
-<table>
-  <tr>
-    <th>Type</th>
-    <th>Price</th>
-    <th>Living space</th>
-    <th>Location</th>
-
-  </tr>
-  <% @properties.each do |property| %>
-    <tr>
-      <td><%= property.property_type %></td>
-      <td><%= property.price %>MUR</td>
-      <td><%= property.living_space %>m2</td>
-      <td><%= property.location %></td>
-      <td><%= link_to 'Show', property %></td>
-
-    </tr>
-  <% end %>
-</table>
+<div>
+  <div class="container">
+    <div id="add-spot-box">
+      <h2>Qu'est ce que vous attendez pour ajouter votre propriété?</h2>
+      <div id="button">
+        <%= link_to 'New Property', new_property_path, class:"btn btn-info btn-lg" %>
+      </div>
+    </div>
+    <p id="notice"><%= notice %></p>
+    <div class="cards">
+      <% @properties.each do |property| %>
+        <div class="card-product">
+          <% if property.photos.empty? %>
+            <td><img width="300" height="200" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top"></td>
+          </td>
+        <% else %>
+          <%= cl_image_tag(property.photos.first.key, :width => 300, :height => 200, :crop => :fill)%>
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= property.property_type %></h2>
+          <p><i class="fas fa-map-marker"> </i><%= property.location %></p>
+          <p><i class="fas fa-coins"> </i> <%= property.price %> MUR</p>
+          <div id="button">
+            <%= link_to 'Show', property, class: "btn btn-outline-secondary btn-sm"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

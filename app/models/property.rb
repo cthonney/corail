@@ -3,4 +3,6 @@ class Property < ApplicationRecord
   has_many :messages
   has_many :slots
   has_many :chat_rooms, through: :messages
+  #Add photos
+  has_many_attached :photos
 end
