@@ -25,6 +25,7 @@ gem 'bootstrap', '~> 5.1.0'
 gem 'cloudinary', '~> 1.21.0'
 gem 'pundit'
 gem 'rails_admin', '~> 2.0'
+gem 'geocoder'
 
 
 # Use Active Storage variant
