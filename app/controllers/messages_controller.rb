@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @property = Property.find(params[:property_id])
     @message.property = @property
+    authorize @message
     if @message.save!
       redirect_to property_chat_room_path(@property, @chat_room, anchor: "message-#{@message.id}")
     else
