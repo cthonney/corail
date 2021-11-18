@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @slot = Slot.find(params[:slot_id])
-    @bookings = @slot.bookings
+    @bookings = policy_scope(@slot.bookings)
   end
 
   def show
@@ -39,6 +39,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
     flash[:notice] = "Booking was successfully deleted"
     redirect_to bookings_path

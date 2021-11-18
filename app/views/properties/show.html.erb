@@ -34,7 +34,7 @@
 <div class="row">
   <div class="card-info col">
     <% if current_user == @property.owner %>
-      <%= link_to "Open messages for this property" %>
+      <%= link_to "Open messages for this property", dashboard_path %>
     <% else %>
       <% if @message %>
         <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
