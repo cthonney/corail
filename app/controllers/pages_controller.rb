@@ -20,7 +20,7 @@ class PagesController < ApplicationController
 
     @properties = @user.properties
 
-    @chat_rooms = @user.chat_rooms
+    @chat_rooms = @user.chat_rooms.uniq
 
     @slots = @user.slots
 
