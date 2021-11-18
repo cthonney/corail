@@ -18,16 +18,9 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-
     @properties = @user.properties
-
     @chat_rooms = @user.chat_rooms.uniq
-
     @slots = @user.slots
-
     @bookings = @user.bookings
-
-    # @bookings = @slot.bookings
-
   end
 end
