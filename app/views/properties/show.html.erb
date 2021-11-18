@@ -1,69 +1,65 @@
-<div class="container" >
-  <div class="card-show" >
-    <div class="container" >
-      <% if @property.photos.empty? %>
-        <td>No photo</td>
-      <% else %>
-        <td><%= render 'shared/carouselshow', spot: @spot %></td>
-      <% end %>
-      <br>
-      <% if policy(@property).destroy? %>
-        <%= link_to 'Delete', @property,  method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <% end %>
-      <%= link_to 'Back', properties_path, :class => "btn btn-outline-secondary btn-sm"  %>
-      <% if policy(@property).edit? %>
-        <%= link_to 'Edit', edit_property_path, :class => "btn btn-outline-secondary btn-sm" %> |
-      <% end %>
-    </div>
-    <div class="container" >
+<div class="card-show" >
+  <div class="container" >
+    <% if @property.photos.empty? %>
+      <img width="400" height="250" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
+    <% else %>
+      <td><%= render 'shared/carouselshow', spot: @spot %></td>
+    <% end %>
+    <br>
+  </div>
+  <div class="container" >
+    <ul>
       <h1>
         <h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
       </h1>
       <i class="fas fa-map-marker"></i>
       <p><%= @property.address %></p>
-      <br>
       <i class="fas fa-bed"></i>
       <p><%= @property.living_space %> m2</p>
-      <br>
       <i class="fas fa-coins"></i>
       <p><%= @property.price %></p>
-      <br>
-    </div>
-    <br>
+    </ul>
   </div>
-  <div class="row">
-    <div class="card-info col">
-      <% if current_user == @property.owner %>
-        <%= link_to "Open messages for this property" %>
+  <br>
+</div>
+<% if policy(@property).destroy? %>
+  <%= link_to 'Delete', @property, :class => "btn btn-outline-secondary btn-sm",  method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<% if policy(@property).edit? %>
+  <%= link_to 'Edit', edit_property_path, :class => "btn btn-outline-secondary btn-sm" %>
+<% end %>
+<% if policy(@slot).new? %>
+  <%= link_to 'New Slot', new_property_slot_path(@property)  %>
+<% end %>
+<div class="row">
+  <div class="card-info col">
+    <% if current_user == @property.owner %>
+      <%= link_to "Open messages for this property" %>
+    <% else %>
+      <% if @message %>
+        <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
       <% else %>
-        <% if @message %>
-          <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room) %>
-        <% else %>
-          <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
-        <% end %>
+        <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property), method: :post %>
       <% end %>
-    </div>
-    <div class="card-info col">
-      <% if policy(@slot).new? %>
-        <%= link_to 'New Slot', new_property_slot_path(@property)  %>
-      <% end %>
-      <table>
+    <% end %>
+  </div>
+  <div class="card-info col">
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Edit</th>
+      </tr>
+      <% @slots.each do |slot| %>
         <tr>
-          <th>Date</th>
-          <th>Edit</th>
+          <td><%= slot.date %></td>
+          <% if policy(slot).destroy? %>
+            <td><%= link_to 'Delete', slot_path(slot), method: :delete %></td>
+          <% end %>
+          <%# if policy(@booking).create? %>
+          <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
+          <%# end %>
         </tr>
-        <% @slots.each do |slot| %>
-          <tr>
-            <td><%= slot.date %></td>
-            <% if policy(slot).destroy? %>
-              <td><%= link_to 'Delete', slot_path(slot), method: :delete %></td>
-            <% end %>
-            <%# if policy(@booking).create? %>
-            <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), method: :post %></td>
-            <%# end %>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+      <% end %>
+    </table>
   </div>
 </div>

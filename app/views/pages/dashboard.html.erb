@@ -2,7 +2,7 @@
 
 
 
-<div class="container">
+<div class="container-dash">
   <div class="cards-dash">
     <h2>My Property</h2>
 <table>
@@ -17,7 +17,7 @@
       <td><%= property.property_type %></td>
       <td><%= property.price %>MUR</td>
       <td><%= property.living_space %>m2</td>
-      <td><%= property.location %></td>
+      <td><%= property.address %></td>
       <td><%= link_to 'Show', property %></td>
     </tr>
   <% end %>
@@ -47,7 +47,7 @@
   <% @slots.each do |slot| %>
     <tr>
       <td><%= slot.property.id %></td>
-      <td><%= slot.property.location %></td>
+      <td><%= slot.property.address %></td>
       <td><%= slot.date %></td>
       <td><%= slot.bookings.count %></td>
       <td><%= link_to "Bookings", slot_bookings_path(slot) %></td>
@@ -67,7 +67,7 @@
   <% @bookings.each do |booking| %>
     <tr>
       <td><%= booking.slot.property.id %></td>
-      <td><%= booking.slot.property.location %></td>
+      <td><%= booking.slot.property.address %></td>
       <td><%= booking.slot.date %></td>
       <td><%= link_to "Show", property_path(booking.slot.property.id) %></td>
 
