@@ -6,7 +6,7 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-    record.property.owner != user
+    true
   end
 
   def show?
