@@ -51,6 +51,6 @@ class PropertiesController < ApplicationController
 
   def property_params
     #Add photos to the params
-    params.require(:property).permit(:property_type, :price, :living_space, :land_surface, :location, :latitude, :longitude, :parking_space, :pool, :room, :bathroom, :sea_view, photos: [])
+    params.require(:property).permit(:property_type, :price, :living_space, :land_surface, :address, :latitude, :longitude, :parking_space, :pool, :room, :bathroom, :sea_view, photos: [])
   end
 end
