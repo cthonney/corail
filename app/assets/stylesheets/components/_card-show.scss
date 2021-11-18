@@ -16,4 +16,8 @@
   width: 50%;
 }
 
-
+.card-show img {
+  height: 80%;
+  object-fit: cover;
+  border-radius: 10px;
+}
