@@ -5,7 +5,7 @@ const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    center: [57.597165, -20.248307],
+    center: [57.56, -20.28],
     zoom: 9,
     style: 'mapbox://styles/mapbox/streets-v10'
   });
@@ -31,7 +31,6 @@ const initMapbox = () => {
     console.log(markers);
     console.log(mapElement);
     addMarkersToMap(map, markers);
-    fitMapToMarkers(map, markers);
   }
 };
 
