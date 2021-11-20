@@ -1,7 +1,124 @@
-// Specific CSS for your home-page
+// Homepage
+.homepage-container {
+  h2 {
+    font-family: 'Maven Pro', sans-serif, !important;
+    font-weight: 50px;
+  }
+}
 
+// Map Section et Search Bar
 .map-container {
-  width: 30%;
-  height: 30%;
+  padding: 50px;
+  width: 600px;
+  height: 100%;
+}
+
+.homepage-search-section {
+  padding: 10px;
+  display: flex;
   margin: 0 auto;
+  align-items: center;
+  width: 1300px;
+  justify-content: space-between;
+}
+
+.title-homepage {
+  font-size: 60px;
+  font-family: 'Maven Pro', sans-serif;
+  font-weight: 600;
+}
+
+.highlight {
+  color: $corail;
+}
+
+.homepage-search-bar {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid grey;
+  width: 90%;
+  height: 60px;
+}
+
+
+.search-button-bar {
+  background: $teal-green;
+  border-radius: 8px;
+  border: transparent;
+  height: 60px;
+  font-size: 30px;
+  color: white;
+  width: 90%;
+}
+
+.search-button-bar:hover {
+    background: $misty-blue;
+}
+
+// Info Section
+#homepage-info-section {
+  align-items: center;
+  display: flex;
+  background: white;
+  padding: 50px;
+  flex-direction: column;
+}
+
+
+#homepage-info-text {
+  padding: 20px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+#info-text {
+  width: 40%;
+}
+
+.search-button-info {
+  background: $teal-green;
+  border-radius: 8px;
+  border: transparent;
+  height: 100px;
+  font-size: 30px;
+  color: white;
+  width: 100%;
+  padding: 10px;
+}
+
+.search-button-info:hover {
+  background: $misty-blue;
+  color: white;
+  text-decoration: none;
+}
+
+// Property Section
+
+.homepage-property-section {
+  background: $ivory;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  justify-content: space-between;
+}
+
+.homepage-property-photos {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: space-evenly;
+}
+
+.homepage-cards {
+  background: white;
+  width: 30%;
+  height: 100%;
+  text-decoration: none;
 }
