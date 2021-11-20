@@ -1,67 +1,60 @@
-<%= simple_form_for @property do |f| %>
-  <div class="form-inputs">
-    <%= f.input :property_type,
+<div class="p-5 mx-auto" style="width: 400px;" >
+  <%= simple_form_for @property do |f| %>
+    <div class="form-inputs">
+      <%= f.input :property_type,
                 collection: ["Villa", "House", "Bungalow", "Flat"],
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Type de bien" }%>
-    <%# Add description %>
-    <%= f.input :description,
+      <%= f.input :description,
                 label: "Describe your property",
                 required: true%>
-    <%= f.input :address,
+      <%= f.input :address,
                 required: true,
                 input_html: { autocomplete: "Address" } %>
-    <%= f.input :price,
+      <%= f.input :price,
                 label: "Price in MUR",
                 required: true,
                 autofocus: true%>
-    <%= f.input :living_space,
+      <%= f.input :living_space,
                 label: "Living area (m2)",
                 required: true,
                 autofocus: true%>
-    <%= f.input :land_surface,
+      <%= f.input :land_surface,
                 label: "Land surface (m2)",
                 required: true,
                 autofocus: true%>
-    <%= f.input :bedrooms,
+      <%= f.input :bedrooms,
                 label: "Number of Bedrooms",
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
-    <%= f.input :bathroom,
+      <%= f.input :bathroom,
                 label: "Number of Bathrooms",
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
-    <%= f.input :parking_space,
+      <%= f.input :parking_space,
                 label: "Number of Parking Spaces",
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
-    <%# ADD Checkbox %>
-    <%= f.input :sea_view,
+      <%# ADD Checkbox %>
+      <%= f.input :sea_view,
                 label: "Sea View",
-                required: true,
                 autofocus: true%>
-
-    <%= f.input :pool,
+      <%= f.input :pool,
                 label: "Pool",
-                required: true,
                 autofocus: true
                 %>
-
-
-
-    <%= f.file_field :photos,
-                      placeholder: 'Upload picture',
+      <h3> Upload your pictures </h3>
+      <%= f.file_field :photos,
+                      required: true,
                       multiple: true,
                       direct_upload: true%>
-
-
-
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, :class => "btn btn-primary" %>
-  </div>
-<% end %>
+    </div>
+    <div class="form-actions mt-2 mx-auto text-center">
+          <%= f.button :submit, :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
