@@ -28,7 +28,7 @@
         <br><br>
         <%= link_to 'What are you waiting for ? Sell your property', new_property_path, class:"search-button-info" %>
       </div>
-      <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
+      <%= image_tag "app/assets/handshake.svg", alt: "handshake", style: "height:250px"%>
     </div>
   </div>
 
@@ -38,7 +38,7 @@
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
-            <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
+            <%= image_tag "app/assets/villa.jpeg", alt: "villa", style: "width:100%" %>
             <div><%= property.property_type %> - <%= property.price %></div>
             <p><%= property.address %></p>
           </a>
