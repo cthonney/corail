@@ -28,7 +28,7 @@
         <br><br>
         Thanks to the reservation and messages system, you can adapt your need to your obligations.
         <br><br>
-        <button class="search-button-info" type="submit">What are you waiting for ? Sell your property</button>
+        <a class="search-button-info" href=<%= properties_path %>>What are you waiting for ? Sell your property</a>
       </div>
       <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
     </div>
@@ -38,13 +38,14 @@
     <h1 class="title-homepage">Last Releases:</h1>
 
     <div class="homepage-property-photos">
+
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
-          <% if property.photos.empty? %>
-            <img width="200" height="200" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
-          <% else %>
-            <%= cl_image_tag(property.photos.first.key, :width => 200, :height => 200, :crop => :fill)%>
-          <% end %>
+          <a class="homepage-property-card" href=<%= property_path(property.id) %>>
+            <div><%= property.property_type %> - <%= property.price %></div>
+            <p><%= property.address %></p>
+          </a>
+          <%# cl_image_tag(property.photos.first.key, :width => 300, :height => 200, :crop => :fill)%>
         </div>
       <% end %>
     </div>
