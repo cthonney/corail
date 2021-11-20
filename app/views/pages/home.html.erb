@@ -38,7 +38,7 @@
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
-            <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
+            <%= image_tag "villa.jpg", alt: "villa", style: "width:100%" %>
             <div><%= property.property_type %> - <%= property.price %></div>
             <p><%= property.address %></p>
           </a>
@@ -72,7 +72,7 @@
       <% 3.times.each do %>
         <div class="homepage-cards">
           <a href="">
-            <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
+            <%= image_tag "villa.jpg", alt: "villa", style: "width:100%" %>
             <h2>Grand Baie</h2>
             <p>Des villas partout</p>
           </a>
