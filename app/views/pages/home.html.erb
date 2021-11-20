@@ -1,17 +1,25 @@
 
-<div class="homepage-search-section">
-  <h1 class="title-homepage">
-    Find your dream house
-    <br>
-    without commission
-  </h1>
-  <%= link_to "Properties SHOW", properties_path %>
-
-  <div class="map-container">
-    <div id="map"
-      style="width: 200; height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="homepage-container">
+  <div class="homepage-search-section">
+    <div>
+      <h1 class="title-homepage">Find your dream house</h1>
+      <h1 class="title-homepage highlight">without commission</h1>
+      <h2>Type your city and fulfil your wishes!</h2>
+      <%= link_to "Properties SHOW", properties_path %>
     </div>
+
+    <div class="map-container">
+      <div id="map"
+        style="width: 200; height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    Property Examples
   </div>
 </div>
