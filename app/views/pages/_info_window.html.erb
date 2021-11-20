@@ -1,0 +1,8 @@
+<h2><%= property.property_type %></h2>
+<p><%= property.address %></p>
+<%= link_to 'See Property', property_path(property.id)  %>
+<% if property.photos.empty? %>
+  <img width="300" height="200" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
+<% else %>
+  <%= cl_image_tag(property.photos.first.key, :width => 100, :height => 100, :crop => :fill)%>
+<% end %>

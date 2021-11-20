@@ -9,7 +9,8 @@ class PagesController < ApplicationController
     @markers = @properties.geocoded.map do |property|
       {
         lat: property.latitude,
-        lng: property.longitude
+        lng: property.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { property: property })
       }
     end
   end
@@ -17,16 +18,9 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-
     @properties = @user.properties
-
     @chat_rooms = @user.chat_rooms.uniq
-
     @slots = @user.slots
-
     @bookings = @user.bookings
-
-    # @bookings = @slot.bookings
-
   end
 end

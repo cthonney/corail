@@ -3,7 +3,7 @@
     <% if @property.photos.empty? %>
       <img width="400" height="250" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
     <% else %>
-      <td><%= render 'shared/carouselshow', spot: @spot %></td>
+      <td><%= render 'shared/carouselshow' %></td>
     <% end %>
     <br>
   </div>
