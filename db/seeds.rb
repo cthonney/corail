@@ -39,12 +39,23 @@ property5 = Property.create(description: "Magnifique Appartement avec vue sur la
 property6 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "Flat", price: "10000000", living_space: "160", land_surface: "160", address: "Flacq", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user3.id)
 property7 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "House", price: "10000000", living_space: "160", land_surface: "160", address: "Phoenix, Mauritius", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user1.id)
 
-
-
-
-
-
 puts "Created #{Property.count} properties"
+
+
+
+property1.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+property2.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+property3.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+property4.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+property5.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+property6.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+property7.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
+
+
+
+
+puts "Attached photos to properties"
+
 
 #TODO Attach pictures to properties
 
