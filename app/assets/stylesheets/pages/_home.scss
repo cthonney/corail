@@ -41,25 +41,32 @@
 }
 
 
-.search-button {
-    background: $teal-green;
-    width: 90%;
-    border-radius: 8px;
-    border: transparent;
-    height: 60px;
-    font-size: 30px;
-    color: white;
+.search-button-bar {
+  background: $teal-green;
+  border-radius: 8px;
+  border: transparent;
+  height: 60px;
+  font-size: 30px;
+  color: white;
+  width: 90%;
 }
 
-.search-button:hover {
+.search-button-bar:hover {
     background: $misty-blue;
 }
 
 // Info Section
-
-.homepage-info-section {
+#homepage-info-section {
+  align-items: center;
+  display: flex;
   background: white;
   padding: 50px;
+  flex-direction: column;
+}
+
+
+#homepage-info-text {
+  padding: 20px;
   display: flex;
   margin: 0 auto;
   align-items: center;
@@ -69,6 +76,20 @@
 
 #info-text {
   width: 40%;
+}
+
+.search-button-info {
+  background: $teal-green;
+  border-radius: 8px;
+  border: transparent;
+  height: 70px;
+  font-size: 30px;
+  color: white;
+  width: 100%;
+}
+
+.search-button-info:hover {
+    background: $misty-blue;
 }
 
 // Property Section
