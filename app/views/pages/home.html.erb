@@ -26,8 +26,6 @@
         With Corail, you can enjoy a free platform to find your future house without any commissions on the sale. Say bye to all real estate agencies that take 15% of commission on your house by directly dealing with the owner of your future house.
         Coral reef is a unique environment for fishes: Corail gives you a unique environment to sell and buy your properties in the best way.
         <br><br>
-        Thanks to the reservation and messages system, you can adapt your need to your obligations.
-        <br><br>
         <%= link_to 'What are you waiting for ? Sell your property', new_property_path, class:"search-button-info" %>
       </div>
       <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
@@ -36,22 +34,51 @@
 
   <div class="homepage-property-section">
     <h1 class="title-homepage">New Releases:</h1>
-
     <div class="homepage-property-photos">
-
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
-          <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
-          <a class="homepage-property-card" href=<%= property_path(property.id) %>>
+          <a href="<%= property_path(property.id) %>">
+            <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
             <div><%= property.property_type %> - <%= property.price %></div>
             <p><%= property.address %></p>
           </a>
-          <%# cl_image_tag(property.photos.first.key, :width => 300, :height => 200, :crop => :fill)%>
         </div>
       <% end %>
     </div>
+    <div>
+      <%= link_to 'See all properties', properties_path, class:"search-button-info" %>
+    </div>
+  </div>
 
-    <%= link_to "See all properties", properties_path %>
+  <div id="homepage-info-section">
+    <div id="homepage-info-text">
+      <div id="info-text">
+        <h2>A platform that fits your needs</h2>
+        - Fix your own slots of availability
+        <br>
+        - Receive direct bookings of visits on your slots
+        <br>
+        - Discuss with your potentiel buyer directly on the app
+        <br><br>
+        <%= link_to 'Check out how does it work', properties_path, class:"search-button-info" %>
+      </div>
+      <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
+    </div>
+  </div>
+
+  <div class="homepage-property-section">
+    <h1 class="title-homepage">Available in all these cities:</h1>
+    <div class="homepage-property-photos">
+      <% 3.times.each do %>
+        <div class="homepage-cards">
+          <a href="">
+            <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
+            <h2>Grand Baie</h2>
+            <p>Des villas partout</p>
+          </a>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>
