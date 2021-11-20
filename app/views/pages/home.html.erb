@@ -28,19 +28,20 @@
         <br><br>
         Thanks to the reservation and messages system, you can adapt your need to your obligations.
         <br><br>
-        <a class="search-button-info" href=<%= properties_path %>>What are you waiting for ? Sell your property</a>
+        <%= link_to 'What are you waiting for ? Sell your property', new_property_path, class:"search-button-info" %>
       </div>
       <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
     </div>
   </div>
 
   <div class="homepage-property-section">
-    <h1 class="title-homepage">Last Releases:</h1>
+    <h1 class="title-homepage">New Releases:</h1>
 
     <div class="homepage-property-photos">
 
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
+          <%= image_tag "villa.jpeg", alt: "villa", style: "width:100%" %>
           <a class="homepage-property-card" href=<%= property_path(property.id) %>>
             <div><%= property.property_type %> - <%= property.price %></div>
             <p><%= property.address %></p>
