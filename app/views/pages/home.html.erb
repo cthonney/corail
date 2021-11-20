@@ -19,10 +19,18 @@
     </div>
   </div>
 
-
+  <div class="homepage-info-section">
+    <div>
+      <h2>Property Examples</h2>
+      <%= link_to "Properties SHOW", properties_path %>
+    </div>
+    <%= image_tag "handshake.svg", alt: "handshake", style: "height:200px" %>
+  </div>
 
   <div class="homepage-property-section">
-    <h2>Property Examples</h2>
-    <%= link_to "Properties SHOW", properties_path %>
+    <h1 class="title-homepage">Last Releases:</h1>
+    <div>
+      <%= link_to "See all properties", properties_path %>
+    </div>
   </div>
 </div>
