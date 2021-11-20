@@ -12,12 +12,23 @@
       <h1>
         <h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
       </h1>
-      <i class="fas fa-map-marker"></i>
-      <p><%= @property.address %></p>
-      <i class="fas fa-bed"></i>
-      <p><%= @property.living_space %> m2</p>
-      <i class="fas fa-coins"></i>
-      <p><%= @property.price %></p>
+      <p class="fas fa-map-marker">  <%= @property.address %></p>
+      <p> Land surface: <%= @property.land_surface %> m2</p>
+      <p> Living space: <%= @property.living_space %> m2</p>
+      <p><%= @property.description %></p>
+      <p><%= @property.bedrooms %> Bedrooms</p>
+      <p><%= @property.bathroom %> Bathrooms</p>
+      <p><%= @property.parking_space %> Parking Spaces</p>
+      <%if @property.sea_view == true %>
+        <p>Sea view</p>
+      <% end %>
+      <%if @property.pool == true %>
+        <p>Pool</p>
+      <% end %>
+
+
+      <p class="fas fa-coins">  <%=@property.price %> MUR</p>
+
     </ul>
   </div>
   <br>
