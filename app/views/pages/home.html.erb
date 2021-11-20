@@ -36,8 +36,20 @@
 
   <div class="homepage-property-section">
     <h1 class="title-homepage">Last Releases:</h1>
-    <div>
-      <%= link_to "See all properties", properties_path %>
+
+    <div class="homepage-property-photos">
+      <% @properties.last(3).each do |property| %>
+        <div class="homepage-cards">
+          <% if property.photos.empty? %>
+            <img width="200" height="200" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
+          <% else %>
+            <%= cl_image_tag(property.photos.first.key, :width => 200, :height => 200, :crop => :fill)%>
+          <% end %>
+        </div>
+      <% end %>
     </div>
+
+    <%= link_to "See all properties", properties_path %>
   </div>
+
 </div>
