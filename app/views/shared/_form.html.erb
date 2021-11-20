@@ -5,30 +5,63 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Type de bien" }%>
+    <%# Add description %>
+    <%= f.input :description,
+                label: "Describe your property",
+                required: true%>
     <%= f.input :address,
                 required: true,
                 input_html: { autocomplete: "Address" } %>
     <%= f.input :price,
+                label: "Price in MUR",
                 required: true,
-                autofocus: true,
-                input_html: { autocomplete: "Prix" }%>
+                autofocus: true%>
     <%= f.input :living_space,
+                label: "Living area (m2)",
                 required: true,
-                autofocus: true,
-                input_html: { autocomplete: "Superficie intérieure" }%>
+                autofocus: true%>
     <%= f.input :land_surface,
+                label: "Land surface (m2)",
+                required: true,
+                autofocus: true%>
+    <%= f.input :bedrooms,
+                label: "Number of Bedrooms",
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "Superficie extérieure" }%>
-    <%# add photos (multiple) %>
+                collection: 1..20%>
+    <%= f.input :bathroom,
+                label: "Number of Bathrooms",
+                required: true,
+                autofocus: true,
+                collection: 1..20%>
+    <%= f.input :parking_space,
+                label: "Number of Parking Spaces",
+                required: true,
+                autofocus: true,
+                collection: 1..20%>
+    <%# ADD Checkbox %>
+    <%= f.input :sea_view,
+                label: "Sea View",
+                required: true,
+                autofocus: true%>
+
+    <%= f.input :pool,
+                label: "Pool",
+                required: true,
+                autofocus: true
+                %>
+
+
+
     <%= f.file_field :photos,
                       placeholder: 'Upload picture',
                       multiple: true,
                       direct_upload: true%>
+
+
+
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary" %>
   </div>
 <% end %>
-
-
