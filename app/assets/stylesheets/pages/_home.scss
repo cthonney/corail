@@ -1,4 +1,4 @@
-// Homepage
+// Homepage -------------------------------
 .homepage-container {
   h2 {
     font-family: 'Maven Pro', sans-serif, !important;
@@ -6,7 +6,7 @@
   }
 }
 
-// Map Section et Search Bar
+// Map Section et Search Bar -------------------------------
 .map-container {
   padding: 50px;
   width: 600px;
@@ -55,7 +55,7 @@
     background: $misty-blue;
 }
 
-// Info Section
+// Info Section -------------------------------
 #homepage-info-section {
   align-items: center;
   display: flex;
@@ -87,6 +87,9 @@
   color: white;
   width: 100%;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-button-info:hover {
@@ -95,7 +98,7 @@
   text-decoration: none;
 }
 
-// Property Section
+// Property Section -------------------------------
 
 .homepage-property-section {
   background: $ivory;

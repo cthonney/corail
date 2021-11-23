@@ -1,10 +1,17 @@
+.container-property {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 // ---------------------- Bar ajout property what are you waiting for
 
 .property-new-bar {
   width: 100%;
   background: white;
   margin-top: 10px;
-  height: 100px;
+  height: 150px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,51 +31,50 @@
   padding: 20px;
 }
 
+.property-cards-photos {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: space-evenly;
+}
+
 
 // ------------------------------------------------- Cards
 
-.card-product {
-  overflow: hidden;
-  height: 180px;
-  width: 100%;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.card-product img {
-  height: 60%;
-  width: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  border-bottom: 1px solid black;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: 0.7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
+.property-cards-container {
+  background: lightgrey;
+  width: 80%;
 }
 
 .cards {
   display: grid;
-  grid-gap: 16px;
+  grid-gap: 30px;
+  justify-items: center;
+}
 
+.property-card {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.property-cards-photos {
+  width: 100%;
+  max-width: 400px;
+  max-height: 250px;
+}
+
+.property-card-text {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-card-type {
+  background: $corail;
+  border-radius: 5px;
+  text-align: center;
 }
 
 // Smallest device
@@ -95,7 +101,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 

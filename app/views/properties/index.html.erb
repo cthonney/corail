@@ -1,31 +1,23 @@
-<div class="property-new-bar">
-  <div id="title-property">What are you waiting for to add your own property?</div>
-  <div>&#160&#160&#160</div>
-  <div><%= link_to 'Add my Property', new_property_path, class:"search-button-info" %></div>
-</div>
+<div class="container-property">
+  <div class="property-new-bar">
+    <div id="title-property">What are you waiting for to add your own property?</div>
+    <div>&#160&#160&#160</div>
+    <div><%= link_to 'Add my Property', new_property_path, class:"search-button-info" %></div>
+  </div>
 
-<div class="property-cards-container">
-  <p id="notice">
-    <%= notice %>
-  </p>
-  <div class="cards">
-    <% @properties.each do |property| %>
-      <div class="card-product">
-        <% if property.photos.empty? %>
-          <img width="300" height="200" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
-        <% else %>
-          <%= cl_image_tag(property.photos.first.key, :width => 300, :height => 200, :crop => :fill)%>
-        <% end %>
-        <div class="card-product-infos">
-          <h2><%= property.property_type %></h2>
-          <p><i class="fas fa-map-marker"> </i><%= property.address %></p>
-          <p><i class="fas fa-coins"> </i> <%= property.price %> MUR</p>
-          <div id="button">
-            <%= link_to 'Show', property, class: "btn btn-outline-secondary btn-sm"%>
+  <div class="property-cards-container">
+    <div class="cards">
+      <% @properties.each do |property| %>
+        <div class="property-card">
+          <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
+          <div class="property-card-text">
+            <div class="property-card-type"><%= property.property_type %></div>
+            <p><i class="fas fa-map-marker"> </i><%= property.address %></p>
+            <p><i class="fas fa-coins"> </i> <%= property.price %> MUR</p>
+            <%= link_to 'Show', property, class: "search-button-info"%>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
