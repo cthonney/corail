@@ -1,3 +1,25 @@
+// ---------------------- Bar ajout property what are you waiting for
+
+.property-new-bar {
+  width: 100%;
+  background: white;
+  margin-top: 10px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#title-property {
+  font-size: 50px;
+}
+
+
+
+
+// ------------------------------------------------- Cards
+
 .card-product {
   overflow: hidden;
   height: 180px;
