@@ -1,11 +1,7 @@
 class PropertiesController < ApplicationController
 
   def index
-<<<<<<< HEAD
-    if params.dig(:search, :type).present? == false && params.dig(:search, :city).present? == false
-=======
     if params[:search][:type].present? == false && params[:search][:city].present? == false
->>>>>>> parent of ce2b093 (simple form css fini mais bug sur city)
       @properties = policy_scope(Property)
     elsif params[:search][:type] == "All" && params[:search][:city].empty?
       @properties = policy_scope(Property)
