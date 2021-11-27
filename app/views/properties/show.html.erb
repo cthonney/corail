@@ -45,18 +45,20 @@
   <div class="card-slot">
     <table>
       <tr>
-        <th>VISIT SLOT</th>
+        <th></th>
         <th></th>
       </tr>
       <% @slots.each do |slot| %>
         <tr>
-          <td><%= slot.date %></td>
+          <td>
+            <h3><%= slot.date.to_formatted_s(:long)%></h3>
+          </td>
           <% if policy(slot).destroy? %>
             <td><%= link_to 'Delete Slot', slot_path(slot), class:"btn btn-danger btn-lg m-2", method: :delete %></td>
           <% end %>
           <%# if policy(@booking).create? %>
           <% if current_user != @property.owner %>
-            <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-lg m-2", method: :post %></td>
+            <td><%= link_to "BOOK VISIT OF THIS PROPERTY", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-lg m-2", method: :post %></td>
           <% end %>
         </tr>
       <% end %>
