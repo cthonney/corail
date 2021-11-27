@@ -7,14 +7,18 @@
       <div><%= link_to 'Add my Property', new_property_path, class:"search-button-info" %></div>
     </div>
 
-    <div>
-    <%= form_tag properties_path, method: :get do %>
+    <div class="container-search-bar">
+    <%= form_tag properties_path, class:"form-row", method: :get do %>
       <%= text_field_tag :type,
         params[:type],
-        class: "form-control",
         placeholder: "Find a property"
       %>
-      <%= submit_tag "Search", class: "search-button-info" %>
+      <%= text_field_tag :city,
+        params[:city],
+        class:"",
+        placeholder: " 📍 Type a city"
+      %>
+      <%= submit_tag "Search", class: "search-button-info button-small" %>
     <% end %>
     </div>
   </div>
