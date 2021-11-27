@@ -8,18 +8,18 @@
     </div>
 
     <div class="container-search-bar">
-    <%= form_tag properties_path, class:"form-row", method: :get do %>
-      <%= text_field_tag :type,
-        params[:type],
-        placeholder: "Find a property"
-      %>
-      <%= text_field_tag :city,
-        params[:city],
-        class:"",
-        placeholder: " 📍 Type a city"
-      %>
-      <%= submit_tag "Search", class: "search-button-info button-small" %>
-    <% end %>
+       <%= form_tag properties_path, class:"form-row", method: :get do %>
+        <%= select_tag :type,
+        options_for_select([ "House", "Bungalow", "Villa", "Flat", "All" ], "All"),
+        class:"form-box"
+        %>
+        <%= text_field_tag :city,
+          params[:city],
+          class:"form-box",
+          placeholder: " 📍 Type a city"
+        %>
+        <%= submit_tag "Search", class: "search-button-info button-small" %>
+       <% end %>
     </div>
   </div>
 
@@ -30,8 +30,8 @@
           <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
           <div class="property-card-text">
             <div class="property-card-type"><%= property.property_type %></div>
-            <p><i class="fas fa-map-marker"> </i><%= property.address %></p>
-            <p><i class="fas fa-coins"> </i> <%= property.price %> MUR</p>
+            <div class="property-card-subtext"><i class="fas fa-map-marker"></i><%= property.address %></div>
+            <div class="property-card-subtext price"><i class="fas fa-coins"></i><%= number_with_delimiter(property.price, :delimiter => ',') %> MUR</div>
             <%= link_to 'Show', property, class: "search-button-info"%>
           </div>
         </div>

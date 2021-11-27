@@ -12,7 +12,7 @@
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@
 
 
 .property-new-bar {
-  width: 50%;
+  width: 70%;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
   height: 150px;
@@ -39,15 +39,15 @@
 }
 
 .container-search-bar {
-  width: 60%;
+  width: 70%;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 20px;
   height: 100px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  justify-content: space-around;
 }
 
 .form-row {
@@ -58,10 +58,18 @@
   justify-content: space-around;
 }
 
-.button-small {
+.form-box {
+  width: 20%;
   height: 50px;
+  border-radius: 5px;
+  border-color: $teal-green;
+  border-style: solid;
+  border-width: 3px
+}
+
+.button-small {
+  height: 70px;
   width: 150px;
-  text-align: center;
 }
 
 // --------- Cards container
@@ -110,11 +118,30 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.property-card-subtext {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3px;
+  font-size: 18px;
+  background-color: darkgrey;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 25px !important;
+  font-weight: bold;
 }
 
 .property-card-type {
   background: $corail;
   border-radius: 5px;
+  margin-bottom: 4px;
   text-align: center;
 }
 

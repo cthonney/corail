@@ -5,9 +5,14 @@
       <h1 class="title-homepage">Find your dream house</h1>
       <h1 class="title-homepage highlight">without commission</h1>
       <h2>Type your city and fulfil your wishes!</h2>
-      <input name class="homepage-search-bar" placeholder=" 📍 Type a city">
-      <br><br>
-      <button class="search-button-bar" type="submit">Search</button>
+      <%= form_tag properties_path, method: :get do %>
+        <%= text_field_tag :city,
+          params[:city],
+          class:"form-box-homepage",
+          placeholder: " 📍 Type a city"
+        %>
+        <%= submit_tag "Search", class: "search-button-info button-small" %>
+      <% end %>
     </div>
 
     <div class="map-container">
@@ -34,13 +39,14 @@
 
   <div class="homepage-property-section">
     <h1 class="title-homepage">New Releases:</h1>
+
     <div class="homepage-property-photos">
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
-            <%= image_tag "villa.jpg", alt: "villa", style: "width:100%" %>
-            <div><%= property.property_type %> - <%= property.price %></div>
-            <p><%= property.address %></p>
+            <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
+            <div class="homepage-text-p"><%= property.property_type %> - <%= property.price %></div>
+            <div class="homepage-text-p"><%= property.address %></div>
           </a>
         </div>
       <% end %>
@@ -60,25 +66,9 @@
         <br>
         - Discuss with your potentiel buyer directly on the app
         <br><br>
-        <%= link_to 'Check out how does it work', properties_path, class:"search-button-info" %>
+        <%= link_to 'Start Now!', new_property_path, class:"search-button-info" %>
       </div>
       <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
     </div>
   </div>
-
-  <div class="homepage-property-section">
-    <h1 class="title-homepage">Available in all these cities:</h1>
-    <div class="homepage-property-photos">
-      <% 3.times.each do %>
-        <div class="homepage-cards">
-          <a href="">
-            <%= image_tag "villa.jpg", alt: "villa", style: "width:100%" %>
-            <h2>Grand Baie</h2>
-            <p>Des villas partout</p>
-          </a>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
 </div>
