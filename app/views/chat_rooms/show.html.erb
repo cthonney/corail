@@ -1,4 +1,6 @@
+<div class="p-5 mx-auto" style="width: 800px;" >
 <h1>Chatroom: <%= @chat_room.title %></h1>
+
 
 <div id="messages" data-chat_room-id="<%= @chat_room.id %>">
   <% @chat_room.messages.each do |message| %>
@@ -13,6 +15,7 @@
 </div>
 
 <%= simple_form_for [ @property, @chat_room, @message ] do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message ##{@chat_room.title}" %>
-  <%= f.submit %>
+  <%= f.input :content, label: false, placeholder: "Message to owner" %>
+  <%= f.submit "Send!", :class => "btn btn-primary"  %>
 <% end %>
+</div>
