@@ -7,10 +7,25 @@
 
 // ---------------------- Bar ajout property what are you waiting for
 
-.property-new-bar {
+.container-background-image {
+  background-image: url("mauritius.png");
   width: 100%;
-  background: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
   margin-top: 10px;
+}
+
+
+.property-new-bar {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
   height: 150px;
   display: flex;
   flex-direction: row;
@@ -21,6 +36,32 @@
 
 #title-property {
   font-size: 30px;
+}
+
+.container-search-bar {
+  width: 60%;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.form-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button-small {
+  height: 50px;
+  width: 150px;
+  text-align: center;
 }
 
 // --------- Cards container

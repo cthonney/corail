@@ -1,8 +1,26 @@
 <div class="container-property">
-  <div class="property-new-bar">
-    <div id="title-property">What are you waiting for to add your own property?</div>
-    <div>&#160&#160&#160</div>
-    <div><%= link_to 'Add my Property', new_property_path, class:"search-button-info" %></div>
+
+  <div class="container-background-image">
+    <div class="property-new-bar">
+      <div id="title-property">What are you waiting for to add your own property?</div>
+      <div>&#160&#160&#160</div>
+      <div><%= link_to 'Add my Property', new_property_path, class:"search-button-info" %></div>
+    </div>
+
+    <div class="container-search-bar">
+    <%= form_tag properties_path, class:"form-row", method: :get do %>
+      <%= text_field_tag :type,
+        params[:type],
+        placeholder: "Find a property"
+      %>
+      <%= text_field_tag :city,
+        params[:city],
+        class:"",
+        placeholder: " 📍 Type a city"
+      %>
+      <%= submit_tag "Search", class: "search-button-info button-small" %>
+    <% end %>
+    </div>
   </div>
 
   <div class="property-cards-container">
