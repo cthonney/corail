@@ -1,7 +1,11 @@
 class PropertiesController < ApplicationController
 
   def index
-    @properties = policy_scope(Property)
+    if params[:type].present?
+      @properties = policy_scope(Property).where(property_type: params[:type])
+    else
+      @properties = policy_scope(Property)
+    end
   end
 
   def show

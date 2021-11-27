@@ -7,10 +7,22 @@
 
 // ---------------------- Bar ajout property what are you waiting for
 
-.property-new-bar {
+.container-background-image {
+  background-image: url("mauritius.jpg");
   width: 100%;
-  background: white;
-  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.property-new-bar {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
   height: 150px;
   display: flex;
   flex-direction: row;
