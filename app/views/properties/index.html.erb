@@ -8,18 +8,24 @@
     </div>
 
     <div class="container-search-bar">
-    <%= form_tag properties_path, class:"form-row", method: :get do %>
-      <%= select_tag :type,
-      options_for_select([ "House", "Bungalow", "Villa", "Flat", "All" ], "All"),
-      class:"form-box"
-      %>
-      <%= text_field_tag :city,
-        params[:city],
-        class:"form-box",
-        placeholder: " 📍 Type a city"
-      %>
-      <%= submit_tag "Search", class: "search-button-info button-small" %>
+
+    <%= simple_form_for :search, url: properties_path, :method => :get do |f| %>
+      <%= f.input :type,
+                collection: ["Villa", "House", "Bungalow", "Flat", "All"],
+                required: true,
+                autofocus: true %>
+
+      <%= f.input :city, :as => :hidden,
+              input_html: { data: { :geocoder_target => "address" } },
+              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      <%= f.button :submit, :class => "btn btn-primary" %>
     <% end %>
+
+
+
+
+
+
     </div>
   </div>
 

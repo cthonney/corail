@@ -6,8 +6,14 @@
       <h1 class="title-homepage highlight">without commission</h1>
       <h2>Type your city and fulfil your wishes!</h2>
       <input name class="homepage-search-bar" placeholder=" 📍 Type a city">
-      <br><br>
-      <button class="search-button-bar" type="submit">Search</button>
+      <%= form_tag properties_path, class:"form-row", method: :get do %>
+        <%= text_field_tag :city,
+          params[:city],
+          class:"form-box",
+          placeholder: " 📍 Type a city"
+        %>
+        <%= submit_tag "Search", class: "search-button-info button-small" %>
+      <% end %>
     </div>
 
     <div class="map-container">
