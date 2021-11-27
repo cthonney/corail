@@ -1,11 +1,11 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
   <div class="carousel-item active">
-       <%= cl_image_tag(@property.photos.first.key, :width => 400, :height => 250, :crop => :fill, class:"d-block")%>
+       <%= cl_image_tag(@property.photos.first.key, :width => 800, :height => 600, :crop => :fill, class:"d-block")%>
       </div>
    <% @property.photos.slice(1..@property.photos.length).each do |photo| %>
      <div class="carousel-item">
-       <%= cl_image_tag(photo.key, :width => 400, :height => 250, :crop => :fill, class:"d-block")%>
+       <%= cl_image_tag(photo.key, :width => 800, :height => 600, :crop => :fill, class:"d-block")%>
       </div>
     <% end %>
   </div>
