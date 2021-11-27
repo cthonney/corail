@@ -1,6 +1,6 @@
-<div class="main-carousel" data-flickity='{ "wrapAround": true }'>
+<div class="main-carousel">
   <% @property.photos.each do |photo| %>
-    <div class="carousel">
+    <div class="carousel-cell">
       <%= cl_image_tag(photo.key, :width => 800, :height => 600, :crop => :fill, class:"d-block")%>
     </div>
   <% end %>
@@ -27,26 +27,38 @@
   </div>
 </div>
 <div class="container-show">
-  <div id="map" class="card-show"
-     style="width: 50%; height: 200px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-  <div class="card-show">
+  <% if current_user == @property.owner %>
+    <div class="card-edit">
+      <% if policy(@property).destroy? %>
+        <%= link_to 'Delete Property', @property, :class => "btn btn-danger btn-lg",  method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <% if policy(@property).edit? %>
+        <%= link_to 'Edit property', edit_property_path, class: "btn btn-info btn-lg" %>
+      <% end %>
+      <% if policy(@slot).new? %>
+        <%= link_to 'New Slot', new_property_slot_path(@property), class:"btn btn-success btn-lg"%>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="container-show">
+  <div class="card-slot">
     <table>
       <tr>
-        <th>VISIT SLOT</th>
+        <th></th>
         <th></th>
       </tr>
       <% @slots.each do |slot| %>
         <tr>
-          <td><%= slot.date %></td>
+          <td>
+            <h3><%= slot.date.to_formatted_s(:long)%></h3>
+          </td>
           <% if policy(slot).destroy? %>
-            <td><%= link_to 'Delete', slot_path(slot), class:"btn btn-warning btn-lg m-2", method: :delete %></td>
+            <td><%= link_to 'Delete Slot', slot_path(slot), class:"btn btn-danger btn-lg m-2", method: :delete %></td>
           <% end %>
           <%# if policy(@booking).create? %>
           <% if current_user != @property.owner %>
-          <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-info btn-lg m-2", method: :post %></td>
+            <td><%= link_to "BOOK VISIT OF THIS PROPERTY", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-lg m-2", method: :post %></td>
           <% end %>
         </tr>
       <% end %>
@@ -54,27 +66,20 @@
   </div>
 </div>
 <div class="container-show">
-  <% if current_user == @property.owner %>
-    <div class="card-show">
-      <% if policy(@property).destroy? %>
-        <%= link_to 'Delete', @property, :class => "btn btn-secondary btn-lg",  method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-      <% if policy(@property).edit? %>
-        <%= link_to 'Edit', edit_property_path, class: "btn btn-secondary btn-lg" %>
-      <% end %>
-      <% if policy(@slot).new? %>
-        <%= link_to 'New Slot', new_property_slot_path(@property), class:"btn btn-info btn-lg"  %>
-      <% end %>
-    </div>
-  <% end %>
-  <div class="card-show">
+  <div id="map" class="card-map"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+<div class="container-show">
+  <div class="card-message">
     <% if current_user == @property.owner %>
-      <%= link_to "Open messages for this property", dashboard_path %>
+      <%= link_to "Open messages for this property", dashboard_path, class:"btn btn-primary btn-lg" %>
     <% else %>
       <% if @message %>
-        <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room), class:"btn btn-info btn-lg" %>
+        <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room),class:"btn btn-primary btn-lg" %>
       <% else %>
-        <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property),class:"btn btn-info btn-lg", method: :post %>
+        <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property),class:"btn btn-primary btn-lg", method: :post %>
       <% end %>
     <% end %>
   </div>
