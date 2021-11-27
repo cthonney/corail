@@ -5,6 +5,11 @@
 }
 
 
+.vertical-center {
+  transform: translateY(20%);
+}
+
+
 // ---------------------- Bar ajout property what are you waiting for
 
 .container-background-image {
@@ -12,7 +17,7 @@
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,15 +28,16 @@
 
 
 .property-new-bar {
-  width: 50%;
+  width: 70%;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  height: 150px;
+  height: 120px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  padding: 20px;
 }
 
 #title-property {
@@ -44,6 +50,10 @@
   border-radius: 20px;
   height: 100px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .form-row {
@@ -55,17 +65,25 @@
 }
 
 .form-box {
-  width: 20%;
-  height: 50px;
-  border-radius: 5px;
-  border-color: $teal-green;
-  border-style: solid;
-  border-width: 3px
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 5px !important;
+  border-color: $teal-green !important;
+  border-style: solid !important;
+  border-width: 3px !important;
+}
+
+.search_city {
+  border-radius: 5px !important;
+  border-color: $teal-green !important;
+  border-style: solid !important;
+  border-width: 3px !important;
+  transform: translateY(20%);
 }
 
 .button-small {
   height: 70px;
-  width: 150px;
+  width: 200px;
 }
 
 // --------- Cards container
