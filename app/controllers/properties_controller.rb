@@ -27,8 +27,7 @@ class PropertiesController < ApplicationController
         lng: @property.longitude,
         info_window: render_to_string(locals: { property: @property })
       }]
-
-    end
+  end
 
 
 
