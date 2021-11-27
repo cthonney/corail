@@ -1,34 +1,61 @@
-<div class=container-show>
-  <div>
-    <div class="card-photo" >
-      <% if @property.photos.empty? %>
-        <img width="800" height="600" src="<%= asset_path('no-image.png') %>" alt="no-image" class="card-img-top">
-      <% else %>
-        <td><%= render 'shared/carouselshow' %></td>
-      <% end %>
+<div class="main-carousel" data-flickity='{ "wrapAround": true }'>
+  <% @property.photos.each do |photo| %>
+    <div class="carousel">
+      <%= cl_image_tag(photo.key, :width => 800, :height => 600, :crop => :fill, class:"d-block")%>
     </div>
-    <div class="card-show" >
-
-        <h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
-        <p class="fas fa-map-marker">  <%= @property.address %></p>
-        <p class="far fa-square"> <%= @property.land_surface %> m2</p>
-        <p class="fas fa-square"> <%= @property.living_space %> m2</p>
-        <p><%= @property.description %></p>
-        <p><%= @property.bedrooms %> Bedrooms</p>
-        <p><%= @property.bathroom %> Bathrooms</p>
-        <p><%= @property.parking_space %> Parking Spaces</p>
-        <%if @property.sea_view == true %>
-          <p>Sea view</p>
-        <% end %>
-        <%if @property.pool == true %>
-          <p>Pool</p>
-        <% end %>
-        <p class="fas fa-coins">  <%=@property.price %> MUR</p>
-
-    </div>
+  <% end %>
+</div>
+<div class="container-show">
+  <div class="card-show">
+    <h2><%= @property.property_type %> - <%= @property.price %> - <%= @property.address %></h2>
+    <p class="fas fa-map-marker">  <%= @property.address %></p>
+    <p class="far fa-square"> <%= @property.land_surface %> m2</p>
+    <p class="fas fa-square"> <%= @property.living_space %> m2</p>
+    <p><%= @property.bedrooms %> Bedrooms</p>
+    <p><%= @property.bathroom %> Bathrooms</p>
+    <p><%= @property.parking_space %> Parking Spaces</p>
+    <%if @property.sea_view == true %>
+      <p>Sea view</p>
+    <% end %>
+    <%if @property.pool == true %>
+      <p>Pool</p>
+    <% end %>
+    <p class="fas fa-coins">  <%=@property.price %> MUR</p>
   </div>
-  <div class="col">
-    <div class="row">
+  <div class="card-show" >
+    <p><%= @property.description %></p>
+  </div>
+</div>
+<div class="container-show">
+  <div id="map" class="card-show"
+     style="width: 50%; height: 200px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <div class="card-show">
+    <table>
+      <tr>
+        <th>VISIT SLOT</th>
+        <th></th>
+      </tr>
+      <% @slots.each do |slot| %>
+        <tr>
+          <td><%= slot.date %></td>
+          <% if policy(slot).destroy? %>
+            <td><%= link_to 'Delete', slot_path(slot), class:"btn btn-warning btn-lg m-2", method: :delete %></td>
+          <% end %>
+          <%# if policy(@booking).create? %>
+          <% if current_user != @property.owner %>
+          <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-info btn-lg m-2", method: :post %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="container-show">
+  <% if current_user == @property.owner %>
+    <div class="card-show">
       <% if policy(@property).destroy? %>
         <%= link_to 'Delete', @property, :class => "btn btn-secondary btn-lg",  method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
@@ -39,35 +66,16 @@
         <%= link_to 'New Slot', new_property_slot_path(@property), class:"btn btn-info btn-lg"  %>
       <% end %>
     </div>
-    <div class="row message-property">
-      <% if current_user == @property.owner %>
-        <%= link_to "Open messages for this property", dashboard_path %>
+  <% end %>
+  <div class="card-show">
+    <% if current_user == @property.owner %>
+      <%= link_to "Open messages for this property", dashboard_path %>
+    <% else %>
+      <% if @message %>
+        <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room), class:"btn btn-info btn-lg" %>
       <% else %>
-        <% if @message %>
-          <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room), class:"btn btn-info btn-lg" %>
-        <% else %>
-          <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property),class:"btn btn-info btn-lg", method: :post %>
-        <% end %>
+        <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property),class:"btn btn-info btn-lg", method: :post %>
       <% end %>
-    </div>
-    <div class="row card-info">
-      <table>
-        <tr>
-          <th>VISIT SLOT</th>
-          <th></th>
-        </tr>
-        <% @slots.each do |slot| %>
-          <tr>
-            <td><%= slot.date %></td>
-            <% if policy(slot).destroy? %>
-              <td><%= link_to 'Delete', slot_path(slot), class:"btn btn-warning btn-lg m-2", method: :delete %></td>
-            <% end %>
-            <%# if policy(@booking).create? %>
-            <td><%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-info btn-lg m-2", method: :post %></td>
-            <%# end %>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+    <% end %>
   </div>
 </div>

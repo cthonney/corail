@@ -25,6 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
+import { initFlickity } from '../plugins/init_flickity';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
