@@ -20,6 +20,7 @@
 (function (window, factory) {
   // universal module definition
   /*jshint strict: false */ /* globals define, module, require */
+  console.log("test")
   if (typeof define == 'function' && define.amd) {
     // AMD
     define('jquery-bridget/jquery-bridget', ['jquery'], function (jQuery) {
