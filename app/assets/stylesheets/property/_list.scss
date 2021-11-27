@@ -8,11 +8,11 @@
 // ---------------------- Bar ajout property what are you waiting for
 
 .container-background-image {
-  background-image: url("mauritius.jpg");
+  background-image: url("mauritius.png");
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,8 @@
 
 .property-new-bar {
   width: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
   height: 150px;
   display: flex;
   flex-direction: row;
