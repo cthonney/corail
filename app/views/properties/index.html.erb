@@ -9,13 +9,13 @@
 
     <div class="container-search-bar">
     <%= form_tag properties_path, class:"form-row", method: :get do %>
-      <%= text_field_tag :type,
-        params[:type],
-        placeholder: "Find a property"
+      <%= select_tag :type,
+      class:"form-box",
+      options_from_collection_for_select(Property.all.map(&:property_type).uniq, "capitalize", "capitalize")
       %>
       <%= text_field_tag :city,
         params[:city],
-        class:"",
+        class:"form-box",
         placeholder: " 📍 Type a city"
       %>
       <%= submit_tag "Search", class: "search-button-info button-small" %>
