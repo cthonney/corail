@@ -65,25 +65,9 @@
         <br>
         - Discuss with your potentiel buyer directly on the app
         <br><br>
-        <%= link_to 'Check out how does it work', properties_path, class:"search-button-info" %>
+        <%= link_to 'Start Now!', new_property_path, class:"search-button-info" %>
       </div>
       <%= image_tag "handshake.svg", alt: "handshake", style: "height:250px"%>
     </div>
   </div>
-
-  <div class="homepage-property-section">
-    <h1 class="title-homepage">Available in all these cities:</h1>
-    <div class="homepage-property-photos">
-      <% 3.times.each do %>
-        <div class="homepage-cards">
-          <a href="">
-            <%= image_tag "villa.jpg", alt: "villa", style: "width:100%" %>
-            <h2>Grand Baie</h2>
-            <p>Des villas partout</p>
-          </a>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
 </div>
