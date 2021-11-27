@@ -3,6 +3,8 @@ class PropertiesController < ApplicationController
   def index
     if params[:type].present? == false && params[:city].present? == false
       @properties = policy_scope(Property)
+    elsif !params[:type] && params[:city].present?
+      @properties = policy_scope(Property).where(address: params[:city])
     elsif params[:type] == "All" && params[:city].empty?
       @properties = policy_scope(Property)
     elsif params[:type] == "All" && params[:city].present?

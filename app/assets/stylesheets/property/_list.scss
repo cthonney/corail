@@ -118,11 +118,28 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.property-card-subtext {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3px;
+  font-size: 12px;
+  background-color: darkgrey;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 30px !important;
 }
 
 .property-card-type {
   background: $corail;
   border-radius: 5px;
+  margin-bottom: 4px;
   text-align: center;
 }
 
