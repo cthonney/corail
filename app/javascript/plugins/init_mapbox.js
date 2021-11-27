@@ -7,7 +7,7 @@ const buildMap = (mapElement) => {
     container: 'map',
     center: [57.56, -20.28],
     zoom: 8.5,
-    style: 'mapbox://styles/mapbox/streets-v10'
+    style: 'mapbox://styles/mapbox/streets-v11'
   });
 };
 

@@ -1,4 +1,4 @@
-<div class="p-5 mx-auto" style="width: 400px;" >
+<div class="p-5 mx-auto" style="width: 600px;" >
   <%= simple_form_for @property do |f| %>
     <div class="form-inputs">
       <%= f.input :property_type,
@@ -7,6 +7,7 @@
                 autofocus: true,
                 input_html: { autocomplete: "Type de bien" }%>
       <%= f.input :description,
+                input_html: {rows: 5, cols: 10},
                 label: "Describe your property",
                 required: true%>
                 <a>Address</a>
@@ -15,28 +16,40 @@
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
       <%= f.input :price,
                 label: "Price in MUR",
+                as: :integer,
+                input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true%>
       <%= f.input :living_space,
                 label: "Living area (m2)",
+                as: :integer,
+                input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true%>
       <%= f.input :land_surface,
                 label: "Land surface (m2)",
+                as: :integer,
+                input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true%>
       <%= f.input :bedrooms,
                 label: "Number of Bedrooms",
+                as: :integer,
+                input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
       <%= f.input :bathroom,
                 label: "Number of Bathrooms",
+                as: :integer,
+                input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
       <%= f.input :parking_space,
                 label: "Number of Parking Spaces",
+                as: :integer,
+                input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
@@ -55,7 +68,7 @@
                       direct_upload: true%>
     </div>
     <div class="form-actions mt-2 mx-auto text-center">
-          <%= f.button :submit, :class => "btn btn-primary" %>
+          <%= f.button :submit, :class => "btn btn-primary btn-lg" %>
     </div>
   <% end %>
 </div>
