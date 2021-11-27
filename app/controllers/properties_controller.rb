@@ -1,7 +1,6 @@
 class PropertiesController < ApplicationController
 
   def index
-
     if params.dig(:search, :type).present? == false && params.dig(:search, :city).present? == false
       @properties = policy_scope(Property)
     elsif params.dig(:search, :type) == "All" && params.dig(:search, :city).empty?
