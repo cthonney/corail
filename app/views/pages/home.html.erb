@@ -5,7 +5,6 @@
       <h1 class="title-homepage">Find your dream house</h1>
       <h1 class="title-homepage highlight">without commission</h1>
       <h2>Type your city and fulfil your wishes!</h2>
-      <input name class="homepage-search-bar" placeholder=" 📍 Type a city">
       <%= form_tag properties_path, class:"form-row", method: :get do %>
         <%= text_field_tag :city,
           params[:city],

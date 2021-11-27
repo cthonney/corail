@@ -1,16 +1,16 @@
 class PropertiesController < ApplicationController
 
   def index
-    if params[:search][:type].present? == false && params[:search][:city].present? == false
+    if params[:type].present? == false && params[:city].present? == false
       @properties = policy_scope(Property)
-    elsif params[:search][:type] == "All" && params[:search][:city].empty?
+    elsif params[:type] == "All" && params[:city].empty?
       @properties = policy_scope(Property)
-    elsif params[:search][:type] == "All" && params[:search][:city].present?
-      @properties = policy_scope(Property).where(address: params[:search][:city])
-    elsif params[:search][:type] != "All" && params[:search][:city].empty?
-      @properties = policy_scope(Property).where(property_type: params[:search][:type])
-    elsif params[:search][:type].present? || params[:search][:city].present?
-      @properties = policy_scope(Property).where(property_type: params[:search][:type], address: params[:search][:city])
+    elsif params[:type] == "All" && params[:city].present?
+      @properties = policy_scope(Property).where(address: params[:city])
+    elsif params[:type] != "All" && params[:city].empty?
+      @properties = policy_scope(Property).where(property_type: params[:type])
+    elsif params[:type].present? || params[:city].present?
+      @properties = policy_scope(Property).where(property_type: params[:type], address: params[:city])
     end
   end
 
