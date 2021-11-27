@@ -16,7 +16,15 @@ class PropertiesController < ApplicationController
     @slot = Slot.new(property: @property)
     @booking = Booking.new(slot_id:params[:slot_id], user_id:current_user.id)
     authorize @property
-  end
+    @markers = [{
+        lat: @property.latitude,
+        lng: @property.longitude,
+        info_window: render_to_string(locals: { property: @property })
+      }]
+
+    end
+
+
 
   def new
     @property = Property.new
