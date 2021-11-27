@@ -39,13 +39,14 @@
 
   <div class="homepage-property-section">
     <h1 class="title-homepage">New Releases:</h1>
+
     <div class="homepage-property-photos">
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
-            <%= image_tag "villa.jpg", alt: "villa", style: "width:100%" %>
-            <div><%= property.property_type %> - <%= property.price %></div>
-            <p><%= property.address %></p>
+            <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
+            <div class="homepage-text-p"><%= property.property_type %> - <%= property.price %></div>
+            <div class="homepage-text-p"><%= property.address %></div>
           </a>
         </div>
       <% end %>
