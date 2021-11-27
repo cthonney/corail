@@ -2,66 +2,72 @@
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  margin: 40px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   text-align: left;
   border-radius: 10px;
   justify-content: space-around;
   flex: 1;
-
-
 }
 
-.card-info {
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  margin: 20px;
-  display: flex;
-  border-radius: 15px;
-
-}
-
-.card-photo img {
-  height: 100%;
-  width: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
 
 .message-property {
   padding: 10px;
   margin: 20px;
   justify-content: center;
-
-
 }
 
 .container-show {
-
   padding: 10px;
-  margin:auto;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: space-around;
 }
 
-.card-photo {
+
+.card-map {
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  margin: 40px;
+  margin: 10px;
   display: flex;
-  border-radius: 15px;
-  align-content: center;
-  justify-content: center;
-
+  width: 50%;
+  height: 200px;
+  border-radius: 10px;
 }
 
+.card-slot {
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  width: 50%;
+  height: min-content;
+  border-radius: 10px;
+}
 
+.card-message {
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  width: 50%;
+  border-radius: 10px;
+  max-height: min-content;
+}
 
+.card-edit {
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  border-radius: 10px;
+  max-height: min-content;
+  justify-content: space-around;
 
-
-
-
+}
