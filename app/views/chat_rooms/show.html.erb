@@ -1,21 +1,23 @@
 <div class="p-5 mx-auto" style="width: 800px;" >
-<h1>Chatroom: <%= @chat_room.title %></h1>
-
-
-<div id="messages" data-chat_room-id="<%= @chat_room.id %>">
-  <% @chat_room.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.surname %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
+  <h1>Chatroom: <%= @chat_room.title %></h1>
+  <div class= "boxchat">
+    <div id="messages" data-chat_room-id="<%= @chat_room.id %>">
+      <% @chat_room.messages.each do |message| %>
+        <div class="message-container" id="message-<%= message.id %>">
+          <i class="author">
+            <span><%= message.user.surname %></span>
+            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+          </i>
+          <p><%= message.content %></p>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class= "boxtext">
+    <%= simple_form_for [ @property, @chat_room, @message ] do |f| %>
+      <%= f.input :content, input_html: {rows: 5, cols: 10}, label: false, placeholder: "Message to owner" %>
+      <%= f.submit "Send!", :class => "btn btn-primary"  %>
+    <% end %>
+  </div>
 </div>
 
-<%= simple_form_for [ @property, @chat_room, @message ] do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message to owner" %>
-  <%= f.submit "Send!", :class => "btn btn-primary"  %>
-<% end %>
-</div>
