@@ -1,6 +1,12 @@
 <%= simple_form_for [:property, @slot] do |f| %>
   <div class="form-inputs">
     <%= f.input :date,
+                as: :datetime,
+                minute_step: 30,
+                start_year: Date.today.year,
+                end_year: Date.today.year + 1,
+                start_hour: 7,
+                end_hour: 22,
                 required: true,
                 autofocus: true%>
     <%# f.input :max_visitor,
