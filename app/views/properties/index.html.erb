@@ -10,8 +10,8 @@
     <div class="container-search-bar">
     <%= form_tag properties_path, class:"form-row", method: :get do %>
       <%= select_tag :type,
-      class:"form-box",
-      options_from_collection_for_select(Property.all.map(&:property_type).uniq, "capitalize", "capitalize")
+      options_for_select([ "House", "Bungalow", "Villa", "Flat", "All" ], "All"),
+      class:"form-box"
       %>
       <%= text_field_tag :city,
         params[:city],

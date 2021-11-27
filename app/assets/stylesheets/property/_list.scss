@@ -58,6 +58,15 @@
   justify-content: space-around;
 }
 
+.form-box {
+  width: 20%;
+  height: 50px;
+  border-radius: 5px;
+  border-color: $teal-green;
+  border-style: solid;
+  border-width: 3px
+}
+
 .button-small {
   height: 70px;
   width: 150px;
