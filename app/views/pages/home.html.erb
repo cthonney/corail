@@ -46,8 +46,11 @@
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
             <%= cl_image_tag(property.photos.first.key, class:"homepage-property-photos")%>
-            <div class="homepage-text-p"><%= property.property_type %> - <%= property.price %></div>
-            <div class="homepage-text-p"><%= property.address %></div>
+            <div class="homepage-cards-text">
+              <div class="property-type-tag-villa"><%= property.property_type %></div>
+              <div class="price-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(property.price, :delimiter => ',') %>MUR</div>
+              <div class="homepage-text-p"><i class="fas fa-map-marker"></i><%= property.address %></div>
+            </div>
           </a>
         </div>
       <% end %>

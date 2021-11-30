@@ -110,7 +110,7 @@ h2 {
   margin: 0 auto;
   align-items: center;
   width: 100%;
-  height: 550px;
+  height: 650px;
   justify-content: space-between;
 }
 
@@ -119,6 +119,10 @@ h2 {
   flex-direction: row;
   width: 70%;
   justify-content: space-evenly;
+}
+
+.homepage-property-new-release a {
+ text-decoration: none;
 }
 
 .homepage-property-photos {
@@ -134,7 +138,28 @@ h2 {
   text-decoration: none;
 }
 
-.homepage-text-p {
-  text-decoration: none !important;
+.property-type-tag-villa {
+  background-color: $corail;
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 0px;
   color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-tag {
+  background-color: lightgrey;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid darkgrey;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
