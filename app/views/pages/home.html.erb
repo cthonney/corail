@@ -41,11 +41,11 @@
   <div class="homepage-property-section">
     <h1 class="title-homepage">New Releases:</h1>
 
-    <div class="homepage-property-photos">
+    <div class="homepage-property-new-release">
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
-            <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
+            <%= cl_image_tag(property.photos.first.key, class:"homepage-property-photos")%>
             <div class="homepage-text-p"><%= property.property_type %> - <%= property.price %></div>
             <div class="homepage-text-p"><%= property.address %></div>
           </a>
