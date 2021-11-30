@@ -47,9 +47,18 @@
           <a href="<%= property_path(property.id) %>">
             <%= cl_image_tag(property.photos.first.key, class:"homepage-property-photos")%>
             <div class="homepage-cards-text">
+              <% case property.property_type %>
+              <% when "Villa" %>
               <div class="property-type-tag-villa"><%= property.property_type %></div>
+              <% when "House" %>
+              <div class="property-type-tag-house"><%= property.property_type %></div>
+              <% when "Bungalow" %>
+              <div class="property-type-tag-bungalow"><%= property.property_type %></div>
+              <% when "Flat" %>
+              <div class="property-type-tag-flat"><%= property.property_type %></div>
+              <% end %>
               <div class="price-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(property.price, :delimiter => ',') %>MUR</div>
-              <div class="homepage-text-p"><i class="fas fa-map-marker"></i><%= property.address %></div>
+              <div class="location-tag"><i class="fas fa-map-marker"></i>&#160;&#160;<%= property.address %></div>
             </div>
           </a>
         </div>
