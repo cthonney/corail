@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $corail;
+  position: sticky;
+  width: 100%;
+  //border-bottom: 5px solid $misty-blue;
+  height: 90px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +13,10 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.nav-link {
+  color: white !important;
+  font-size: 30px;
+  font-family: Nunito;
 }
