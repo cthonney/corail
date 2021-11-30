@@ -1,3 +1,32 @@
 .container-form-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 30px;
+  width: 90%;
+}
 
+.container-form-main-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-form-split-2col {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 2000px;
+}
+
+.container-form-each-col {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(200,200,200);
+  padding: 20px;
+}
+
+.new-property-form-box {
+  width: 100%;
 }
