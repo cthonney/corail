@@ -2,8 +2,7 @@
 
   <div class="container-background-image">
     <div class="property-new-bar">
-      <div id="title-property">What are you waiting for to add your own property?</div>
-      <div>&#160&#160&#160</div>
+      <h2>What are you waiting for to add your own property?</h2>
       <div><%= link_to 'Add my Property', new_property_path, class:"search-button-info" %></div>
     </div>
 
@@ -28,10 +27,21 @@
       <% @properties.each do |property| %>
         <div class="property-card">
           <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
+
           <div class="property-card-text">
-            <div class="property-card-type"><%= property.property_type %></div>
-            <div class="property-card-subtext"><i class="fas fa-map-marker"></i><%= property.address %></div>
-            <div class="property-card-subtext price"><i class="fas fa-coins"></i><%= number_with_delimiter(property.price, :delimiter => ',') %> MUR</div>
+            <% case property.property_type %>
+            <% when "Villa" %>
+              <div class="property-type-tag-villa"><%= property.property_type %></div>
+            <% when "House" %>
+              <div class="property-type-tag-house"><%= property.property_type %></div>
+            <% when "Bungalow" %>
+              <div class="property-type-tag-bungalow"><%= property.property_type %></div>
+            <% when "Flat" %>
+              <div class="property-type-tag-flat"><%= property.property_type %></div>
+            <% end %>
+
+            <div class="location-tag"><i class="fas fa-map-marker">&#160;&#160;</i><%= property.address %></div>
+            <div class="price-tag"><i class="fas fa-coins">&#160;&#160;</i><%= number_with_delimiter(property.price, :delimiter => ',') %> MUR</div>
             <%= link_to 'Show', property, class: "search-button-info"%>
           </div>
         </div>
