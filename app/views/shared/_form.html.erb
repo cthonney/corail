@@ -1,4 +1,4 @@
-<div class="p-5 mx-auto" style="width: 600px;" >
+<div class="container-form-new">
   <%= simple_form_for @property do |f| %>
     <div class="form-inputs">
       <%= f.input :property_type,
@@ -32,6 +32,8 @@
                 input_html: { min: '0', step: 'any'},
                 required: true,
                 autofocus: true%>
+      </div>
+      <div class="form-inputs">
       <%= f.input :bedrooms,
                 label: "Number of Bedrooms",
                 as: :integer,
@@ -53,7 +55,6 @@
                 required: true,
                 autofocus: true,
                 collection: 1..20%>
-      <%# ADD Checkbox %>
       <%= f.input :sea_view,
                 label: "Sea View",
                 autofocus: true%>
