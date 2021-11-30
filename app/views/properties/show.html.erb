@@ -54,7 +54,7 @@
 <div class="container-slots">
   <% if current_user == @property.owner %>
     <% if policy(@slot).new? %>
-      <%= link_to 'New Slot', new_property_slot_path(@property), class:"card-slot"%>
+      <%= link_to 'New Slot', new_property_slot_path(@property), class:"new-slot"%>
     <% end %>
   <% end %>
   <% @slots.each do |slot| %>
