@@ -1,61 +1,61 @@
-
-  <%= simple_form_for @property,  html: { class: "container-form-main-column"} do |f| %>
-    <div class="container-form-split-2col">
-      <div class="container-form-each-col">
-        <%= f.input :property_type,
+<%= simple_form_for @property,  html: { class: "container-form-main-column"} do |f| %>
+  <div class="container-form-split-2col">
+    <div class="container-form-each-col">
+      <%= f.input :property_type,
                   collection: ["Villa", "House", "Bungalow", "Flat"],
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "Type de bien", class: 'new-property-form-box'}%>
-        <%= f.input :description,
+      <%= f.input :description,
                   input_html: {rows: 5, cols: 10, class: 'new-property-form-box'},
                   label: "Describe your property",
                   required: true%>
-                  <a>Address</a>
-        <%= f.input :address, :as => :hidden,
+      <a>Address</a>
+      <%= f.input :address, :as => :hidden,
                 input_html: { data: { :geocoder_target => "address", class: 'new-property-form-box' } },
                 wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-        <%= f.input :price,
+      <%= f.input :price,
                   label: "Price in MUR",
                   as: :integer,
                   input_html: { min: '0', step: 'any', class: 'new-property-form-box'},
                   required: true,
                   autofocus: true%>
-        <%= f.input :living_space,
+      <%= f.input :living_space,
                   label: "Living area (m2)",
                   as: :integer,
                   input_html: { min: '0', step: 'any', class: 'new-property-form-box'},
                   required: true,
                   autofocus: true%>
-      </div>
-      <div class="container-form-each-col">
-        <%= f.input :land_surface,
+    </div>
+    <div class="container-form-each-col">
+      <%= f.input :land_surface,
                   label: "Land surface (m2)",
                   as: :integer,
                   input_html: { min: '0', step: 'any', class: 'new-property-form-box'},
                   required: true,
                   autofocus: true%>
-        <%= f.input :bedrooms,
+      <%= f.input :bedrooms,
                   label: "Number of Bedrooms",
                   as: :integer,
                   input_html: { min: '0', step: 'any', class: 'new-property-form-box'},
                   required: true,
                   autofocus: true,
                   collection: 1..20%>
-        <%= f.input :bathroom,
+      <%= f.input :bathroom,
                   label: "Number of Bathrooms",
                   as: :integer,
                   input_html: { min: '0', step: 'any', class: 'new-property-form-box'},
                   required: true,
                   autofocus: true,
                   collection: 1..20%>
-        <%= f.input :parking_space,
+      <%= f.input :parking_space,
                   label: "Number of Parking Spaces",
                   as: :integer,
                   input_html: { min: '0', step: 'any', class: 'new-property-form-box'},
                   required: true,
                   autofocus: true,
                   collection: 1..20%>
+      <div class="container-form-split-2col">
         <%= f.input :sea_view,
                   label: "Sea View",
                   input_html: { class: "tag-selector" },
@@ -65,14 +65,15 @@
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item'
                   %>
-        <h4> Upload your pictures </h4>
-        <%= f.file_field :photos,
+      </div>
+      <h4> Upload your pictures </h4>
+      <%= f.file_field :photos,
                         required: true,
                         multiple: true,
                         direct_upload: true%>
-      </div>
     </div>
-    <div>
-          <%= f.button :submit, :class => "search-button-info button-small" %>
-    </div>
-  <% end %>
+  </div>
+  <div>
+    <%= f.button :submit, :class => "search-button-info button-small" %>
+  </div>
+<% end %>
