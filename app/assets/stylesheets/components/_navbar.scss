@@ -1,10 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $corail;
+  background: $corailnav;
   position: sticky;
   width: 100%;
   //border-bottom: 5px solid $misty-blue;
-  height: 90px;
+  height: 60px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -23,5 +23,5 @@
 
 .avatar {
   border: 3px solid white;
-  width: 60px
+  width: 40px
 }

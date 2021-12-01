@@ -21,66 +21,55 @@
       <p>Pool</p>
     <% end %>
     <p class="fas fa-coins">  <%=@property.price %> MUR</p>
+    <% if current_user == @property.owner %>
+      <div class="card-edit">
+        <% if policy(@property).destroy? %>
+          <%= link_to '', @property, :class => "fas fa-trash-alt",  method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% if policy(@property).edit? %>
+          <%= link_to '', edit_property_path, class: "fas fa-pencil-alt" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="card-show" >
     <p><%= @property.description %></p>
   </div>
-</div>
-<div class="container-show">
-  <% if current_user == @property.owner %>
-    <div class="card-edit">
-      <% if policy(@property).destroy? %>
-        <%= link_to 'Delete Property', @property, :class => "btn btn-danger btn-lg",  method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-      <% if policy(@property).edit? %>
-        <%= link_to 'Edit property', edit_property_path, class: "btn btn-info btn-lg" %>
-      <% end %>
-      <% if policy(@slot).new? %>
-        <%= link_to 'New Slot', new_property_slot_path(@property), class:"btn btn-success btn-lg"%>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div class="container-show">
-  <div class="card-slot">
-    <table>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-      <% @slots.each do |slot| %>
-        <tr>
-          <td>
-            <h3><%= slot.date.to_formatted_s(:long)%></h3>
-          </td>
-          <% if policy(slot).destroy? %>
-            <td><%= link_to 'Delete Slot', slot_path(slot), class:"btn btn-danger btn-lg m-2", method: :delete %></td>
-          <% end %>
-          <%# if policy(@booking).create? %>
-          <% if current_user != @property.owner %>
-            <td><%= link_to "BOOK VISIT OF THIS PROPERTY", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-lg m-2", method: :post %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-<div class="container-show">
   <div id="map" class="card-map"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-<div class="container-show">
-  <div class="card-message">
-    <% if current_user == @property.owner %>
-      <%= link_to "Open messages for this property", dashboard_path, class:"btn btn-primary btn-lg" %>
+<div class="card-message">
+  <% if current_user == @property.owner %>
+    <%= link_to "Go to owner dashboard", dashboard_path, class:"btn btn-primary btn-lg" %>
+  <% else %>
+    <% if @message %>
+      <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room),class:"btn btn-primary btn-lg" %>
     <% else %>
-      <% if @message %>
-        <%= link_to 'See messages with this owner', property_chat_room_path(@property, @message.chat_room),class:"btn btn-primary btn-lg" %>
-      <% else %>
-        <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property),class:"btn btn-primary btn-lg", method: :post %>
-      <% end %>
+      <%= link_to 'Send a message to the owner', property_chat_rooms_path(@property),class:"btn btn-primary btn-lg", method: :post %>
     <% end %>
-  </div>
+  <% end %>
+</div>
+<div class="container-slots">
+  <% if current_user == @property.owner %>
+    <% if policy(@slot).new? %>
+      <%= link_to 'New Slot', new_property_slot_path(@property), class:"new-slot"%>
+    <% end %>
+  <% end %>
+  <% @slots.each do |slot| %>
+    <div class="card-slot">
+      <p><%= slot.date.to_formatted_s(:day_date_comma_month)%></p>
+      <i class="fas fa-at"></i>
+      <p><%= slot.date.to_formatted_s(:time)%></p>
+      <% if policy(slot).destroy? %>
+        <%= link_to '', slot_path(slot), class:"fas fa-trash-alt", method: :delete %>
+      <% end %>
+      <%# if policy(@booking).create? %>
+      <% if current_user != @property.owner %>
+        <%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-sm m-2", method: :post %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 </div>
