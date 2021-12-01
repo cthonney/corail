@@ -1,0 +1,36 @@
+.container-form-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin: auto;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.container-form-main-column {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.container-form-split-2col {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 2000px;
+}
+
+.container-form-each-col {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.new-property-form-box {
+  width: 100%;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  height: 50px;
+}

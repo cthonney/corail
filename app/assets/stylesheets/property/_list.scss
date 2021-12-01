@@ -24,13 +24,13 @@
 
 .property-new-bar {
   width: 70%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255);
   border-radius: 20px;
-  height: 150px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   margin-bottom: 10px;
 }
 
@@ -59,8 +59,8 @@
 }
 
 .form-box {
-  width: 20%;
-  height: 50px;
+  width: 40%;
+  height: 52px;
   border-radius: 5px;
   border-color: $teal-green;
   border-style: solid;
@@ -68,7 +68,7 @@
 }
 
 .button-small {
-  height: 70px;
+  height: 52px;
   width: 150px;
 }
 
@@ -91,7 +91,7 @@
 // ------------------------------------------------- Cards
 
 .property-cards-container {
-  background: lightgrey;
+  background: transparent;
   width: 80%;
 }
 
@@ -119,23 +119,8 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-}
-
-.property-card-subtext {
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 3px;
-  font-size: 18px;
-  background-color: darkgrey;
-  border-radius: 5px;
   justify-content: space-between;
-  align-items: center;
-}
-
-.price {
-  font-size: 25px !important;
-  font-weight: bold;
+  height: 250px;
 }
 
 .property-card-type {

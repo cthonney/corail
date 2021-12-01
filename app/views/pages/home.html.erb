@@ -4,6 +4,7 @@
     <div>
       <h1 class="title-homepage">Find your dream house</h1>
       <h1 class="title-homepage highlight">without commission</h1>
+      <br><br>
       <h2>Type your city and fulfil your wishes!</h2>
       <%= form_tag properties_path, method: :get do %>
         <%= text_field_tag :city,
@@ -27,7 +28,7 @@
   <div id="homepage-info-section">
     <div id="homepage-info-text">
       <div id="info-text">
-        <h2>The perfect platform for your projects</h2>
+        <h1><strong>The perfect platform for your projects</strong></h1>
         With Corail, you can enjoy a free platform to find your future house without any commissions on the sale. Say bye to all real estate agencies that take 15% of commission on your house by directly dealing with the owner of your future house.
         Coral reef is a unique environment for fishes: Corail gives you a unique environment to sell and buy your properties in the best way.
         <br><br>
@@ -40,13 +41,25 @@
   <div class="homepage-property-section">
     <h1 class="title-homepage">New Releases:</h1>
 
-    <div class="homepage-property-photos">
+    <div class="homepage-property-new-release">
       <% @properties.last(3).each do |property| %>
         <div class="homepage-cards">
           <a href="<%= property_path(property.id) %>">
-            <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
-            <div class="homepage-text-p"><%= property.property_type %> - <%= property.price %></div>
-            <div class="homepage-text-p"><%= property.address %></div>
+            <%= cl_image_tag(property.photos.first.key, class:"homepage-property-photos")%>
+            <div class="homepage-cards-text">
+              <% case property.property_type %>
+              <% when "Villa" %>
+              <div class="property-type-tag-villa"><%= property.property_type %></div>
+              <% when "House" %>
+              <div class="property-type-tag-house"><%= property.property_type %></div>
+              <% when "Bungalow" %>
+              <div class="property-type-tag-bungalow"><%= property.property_type %></div>
+              <% when "Flat" %>
+              <div class="property-type-tag-flat"><%= property.property_type %></div>
+              <% end %>
+              <div class="price-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(property.price, :delimiter => ',') %>MUR</div>
+              <div class="location-tag"><i class="fas fa-map-marker"></i>&#160;&#160;<%= property.address %></div>
+            </div>
           </a>
         </div>
       <% end %>
@@ -59,7 +72,7 @@
   <div id="homepage-info-section">
     <div id="homepage-info-text">
       <div id="info-text">
-        <h2>A platform that fits your needs</h2>
+        <h1><strong>A platform that fits your needs</strong></h1>
         - Fix your own slots of availability
         <br>
         - Receive direct bookings of visits on your slots
