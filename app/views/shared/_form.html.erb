@@ -58,12 +58,12 @@
                   collection: 1..20%>
         <%= f.input :sea_view,
                   label: "Sea View",
-                  input_html: { class: 'new-property-form-box'},
-                  autofocus: true%>
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item'%>
         <%= f.input :pool,
                   label: "Pool",
-                  input_html: { class: 'new-property-form-box'},
-                  autofocus: true
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item'
                   %>
         <h4> Upload your pictures </h4>
         <%= f.file_field :photos,
