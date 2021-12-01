@@ -1,9 +1,8 @@
 // Homepage -------------------------------
-.homepage-container {
-  h2 {
-    font-family: 'Maven Pro', sans-serif, !important;
-    font-weight: 50px;
-  }
+h2 {
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
 
 // Map Section et Search Bar -------------------------------
@@ -24,8 +23,8 @@
 
 .title-homepage {
   font-size: 60px;
-  font-family: 'Maven Pro', sans-serif;
   font-weight: 600;
+  margin-bottom: 0px;
 }
 
 .highlight {
@@ -40,6 +39,7 @@
   border-style: solid;
   border-width: 3px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 
@@ -48,7 +48,7 @@
   border-radius: 8px;
   border: transparent;
   height: 60px;
-  font-size: 30px;
+  font-size: 20px;
   color: white;
   width: 90%;
 }
@@ -85,7 +85,7 @@
   border-radius: 8px;
   border: transparent;
   height: 70px;
-  font-size: 30px;
+  font-size: 20px;
   color: white;
   width: 100%;
   padding: 10px;
@@ -110,15 +110,25 @@
   margin: 0 auto;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: 650px;
   justify-content: space-between;
 }
 
-.homepage-property-photos {
+.homepage-property-new-release {
   display: flex;
   flex-direction: row;
   width: 70%;
   justify-content: space-evenly;
+}
+
+.homepage-property-new-release a {
+ text-decoration: none;
+}
+
+.homepage-property-photos {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
 }
 
 .homepage-cards {
@@ -128,7 +138,86 @@
   text-decoration: none;
 }
 
-.homepage-text-p {
-  text-decoration: none !important;
+.homepage-cards-text {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 170px;
+  justify-content: space-around;
+}
+
+.property-type-tag-villa {
+  background-color: $corail;
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 0px;
   color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.property-type-tag-house {
+  background-color: $blue;
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 0px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.property-type-tag-bungalow {
+  background-color: $yellow;
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 0px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.property-type-tag-flat {
+  background-color: $green;
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 0px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-tag {
+  background-color: lightgrey;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-tag {
+  background-color: lightgrey;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  color: black;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

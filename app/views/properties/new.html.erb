@@ -1,8 +1,5 @@
-<div class="mx-auto" style="width: 400px;" >
-<h1 class=>Add a new property</h1>
+<div class="container-form-new">
+  <h1 class="title-homepage">Add your property :</h1>
+  <%= render 'shared/form', property: @property %>
 </div>
-
-<%= render 'shared/form', property: @property %>
-
-<%= link_to 'Back', properties_path %>
 
