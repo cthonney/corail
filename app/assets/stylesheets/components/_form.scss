@@ -18,7 +18,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 2000px;
+  // replace width:2000px with width:auto
+  width: auto;
 }
 
 .container-form-each-col {
@@ -33,4 +34,11 @@
   border: 2px solid lightgrey;
   border-radius: 4px;
   height: 50px;
+}
+// CSS override search bar geocoder
+.mapboxgl-ctrl-geocoder {
+  width: 100% !important;
+  border: 2px solid lightgrey !important;
+  border-radius: 4px !important;
+  height: 50px !important;
 }
