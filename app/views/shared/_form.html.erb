@@ -55,7 +55,7 @@
                   required: true,
                   autofocus: true,
                   collection: 1..20%>
-      <div class="container-form-split-2col">
+      <div class="button-form-split-2col">
         <%= f.input :sea_view,
                   label: "Sea View",
                   input_html: { class: "tag-selector" },
@@ -66,13 +66,14 @@
                   item_wrapper_class: 'tag-item'
                   %>
       </div>
-     
+
       <%# f.file_field :photos,
                         required: true,
                         multiple: true,
                         direct_upload: true%>
       <div class="image-upload">
         <label for="file-input">
+          <i class="fas fa-camera tag"></i>
           <span class="fas fa-camera tag"> Upload your pictures</span>
         </label>
         <%= f.file_field :photos,
