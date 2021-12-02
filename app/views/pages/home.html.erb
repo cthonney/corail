@@ -41,12 +41,12 @@
   <div class="homepage-property-section">
     <h1 class="title-homepage">New Releases:</h1>
 
-    <div class="homepage-property-new-release">
+    <div class="cards">
       <% @properties.last(3).each do |property| %>
-        <div class="homepage-cards">
+        <div class="property-card">
           <a href="<%= property_path(property.id) %>">
-            <%= cl_image_tag(property.photos.first.key, class:"homepage-property-photos")%>
-            <div class="homepage-cards-text">
+            <%= cl_image_tag(property.photos.first.key, class:"property-cards-photos")%>
+            <div class="property-card-text">
               <% case property.property_type %>
               <% when "Villa" %>
               <div class="property-type-tag-villa"><%= property.property_type %></div>
@@ -65,7 +65,7 @@
       <% end %>
     </div>
     <div>
-      <%= link_to 'See all properties', properties_path, class:"search-button-info" %>
+      <%= link_to 'See all properties', properties_path, class:"search-button-info m-2" %>
     </div>
   </div>
 
