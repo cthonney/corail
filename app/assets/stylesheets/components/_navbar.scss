@@ -16,12 +16,26 @@
 }
 
 .nav-link {
-  color: white !important;
-  font-size: 30px;
-  font-family: Nunito;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 25px;
+  color: white;
+  border: 1px solid white;
+  padding-bottom: 30px;
+  height: 25px;
+  width: auto;
+  font-size: medium;
+  text-align: center;
 }
 
 .avatar {
   border: 3px solid white;
   width: 40px
+}
+
+
+
+.nav-link:hover {
+  background-color:$corail;
+  color: white;
 }
