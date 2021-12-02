@@ -28,6 +28,8 @@ gem 'rails_admin', '~> 2.0'
 gem 'geocoder'
 
 
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -55,6 +57,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'htmlbeautifier'
+  gem 'rufo'
 end
 
 group :test do
