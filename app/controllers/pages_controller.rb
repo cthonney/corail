@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     @properties = policy_scope(Property)
@@ -10,11 +10,10 @@ class PagesController < ApplicationController
       {
         lat: property.latitude,
         lng: property.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { property: property })
+        info_window: render_to_string(partial: "info_window", locals: { property: property }),
       }
     end
   end
-
 
   def dashboard
     @user = current_user

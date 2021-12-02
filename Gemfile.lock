@@ -244,6 +244,7 @@ GEM
       netrc (~> 0.8)
     rexml (3.2.5)
     rubyzip (2.3.2)
+    rufo (0.13.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -332,6 +333,7 @@ DEPENDENCIES
   rails (~> 6.0.4, >= 6.0.4.1)
   rails_admin (~> 2.0)
   redis (~> 4.0)
+  rufo
   sass-rails (>= 6)
   selenium-webdriver
   simple_form

@@ -1,5 +1,4 @@
 class PropertiesController < ApplicationController
-
   def index
     if params[:type].present? == false && params[:city].present? == false
       @properties = policy_scope(Property)
@@ -22,16 +21,14 @@ class PropertiesController < ApplicationController
     @slots = Slot.where(property_id: params[:id])
     @chat_rooms = current_user.chat_rooms.uniq
     @slot = Slot.new(property: @property)
-    @booking = Booking.new(slot_id:params[:slot_id], user_id:current_user.id)
+    @booking = Booking.new(slot_id: params[:slot_id], user_id: current_user.id)
     authorize @property
     @markers = [{
-        lat: @property.latitude,
-        lng: @property.longitude,
-        info_window: render_to_string(locals: { property: @property })
-      }]
+      lat: @property.latitude,
+      lng: @property.longitude,
+      info_window: render_to_string(locals: { property: @property }),
+    }]
   end
-
-
 
   def new
     @property = Property.new
