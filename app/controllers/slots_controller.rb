@@ -22,7 +22,7 @@ class SlotsController < ApplicationController
       # redirect_to @property_slot_path
       redirect_to property_path(@slot.property_id)
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -38,7 +38,7 @@ class SlotsController < ApplicationController
     if @slot.update(slot_params)
       redirect_to property_path(@slot.property_id)
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -50,7 +50,8 @@ class SlotsController < ApplicationController
   end
 
   private
-    def slot_params
-      params.require(:slot).permit(:property_id, :date, :max_visitor)
-    end
+
+  def slot_params
+    params.require(:slot).permit(:property_id, :date, :max_visitor)
+  end
 end

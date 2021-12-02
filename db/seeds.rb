@@ -14,13 +14,12 @@ ChatRoom.destroy_all
 Property.destroy_all
 User.destroy_all
 
-
 puts "Destroyed all records"
 #Create Users
-user1 = User.create(email: 'c@corail.me', password: '123456', name: 'Thonney', surname: "Cedric", phone_number: "0612345678")
-user2 = User.create(email: 'r@corail.me', password: '123456', name: 'Dumas', surname: "Remi", phone_number: "0612345678")
-user3 = User.create(email: 'n@corail.me', password: '123456', name: 'Anauth', surname: "Nikhil", phone_number: "0612345678")
-admin = User.create(email: 'admin@corail.me', password: 'admin123456**', name: 'Admin', surname: "Admin", phone_number: "0612345678", admin: true)
+user1 = User.create(email: "c@corail.me", password: "123456", name: "Thonney", surname: "Cedric", phone_number: "0612345678")
+user2 = User.create(email: "r@corail.me", password: "123456", name: "Dumas", surname: "Remi", phone_number: "0612345678")
+user3 = User.create(email: "n@corail.me", password: "123456", name: "Anauth", surname: "Nikhil", phone_number: "0612345678")
+admin = User.create(email: "admin@corail.me", password: "admin123456**", name: "Admin", surname: "Admin", phone_number: "0612345678", admin: true)
 puts "Created #{User.count} users"
 #Attach avatar to users
 user1.avatar.attach(io: File.open("app/assets/images/avatars/avatar1.png"), filename: "avatar1.png")
@@ -41,8 +40,6 @@ property7 = Property.create(description: "Magnifique Appartement avec vue sur la
 
 puts "Created #{Property.count} properties"
 
-
-
 property1.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
 property2.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
 property3.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
@@ -51,11 +48,7 @@ property5.photos.attach(io: File.open("app/assets/images/no-image.png"), filenam
 property6.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
 property7.photos.attach(io: File.open("app/assets/images/no-image.png"), filename: "no-image.png")
 
-
-
-
 puts "Attached photos to properties"
-
 
 #TODO Attach pictures to properties
 
@@ -80,7 +73,6 @@ booking5 = Booking.create(slot_id: slot5.id, user_id: user3.id)
 booking6 = Booking.create(slot_id: slot6.id, user_id: user1.id)
 puts "Created #{Booking.count} bookings"
 
-
 #Create messages
 
 chat_room1 = ChatRoom.create(title: user1.name)
@@ -91,8 +83,6 @@ puts "Created #{ChatRoom.count} chat rooms"
 
 message1 = Message.create(content: "Hello, I'm interested in your property", user_id: user1.id, property_id: property2.id, chat_room_id: chat_room1.id)
 message2 = Message.create(content: "Hello, I'm interested in your property", user_id: user2.id, property_id: property1.id, chat_room_id: chat_room2.id)
-message3 = Message.create(content: "Hello, I'm interested in your property", user_id: user3.id, property_id: property3.id , chat_room_id: chat_room3.id)
-
+message3 = Message.create(content: "Hello, I'm interested in your property", user_id: user3.id, property_id: property3.id, chat_room_id: chat_room3.id)
 
 puts "Created #{Message.count} messages"
-

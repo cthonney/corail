@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def index
     @slot = Slot.find(params[:slot_id])
     @bookings = policy_scope(@slot.bookings)
@@ -17,7 +16,7 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save
       flash[:notice] = "Booking was successfully created"
-      redirect_back(fallback_location: 'something')
+      redirect_back(fallback_location: "something")
     else
       flash[:notice] = "Booking error!"
     end
@@ -46,6 +45,4 @@ class BookingsController < ApplicationController
   end
 
   private
-
-
 end
