@@ -42,3 +42,39 @@
   border-radius: 4px !important;
   height: 50px !important;
 }
+
+
+.image-upload > input
+{
+   display: none;
+}
+.image-upload > label{
+  cursor:pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 50rem;
+  padding: 0.8rem 0.8rem;
+  background-color: #e57f8460;
+  color: #4297A0;
+  border: 1px solid #e57f8460;
+  margin-right: 0.6rem;
+  margin-top: 2rem;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+.image-upload > label > span{
+  font-size: 16px;
+  font-weight: 400;
+}
+
+
+.button-form-split-2col {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // replace width:2000px with width:auto
+  width: auto;
+}
