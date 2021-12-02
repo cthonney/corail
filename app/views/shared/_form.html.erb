@@ -66,14 +66,25 @@
                   item_wrapper_class: 'tag-item'
                   %>
       </div>
-      <h4> Upload your pictures </h4>
-      <%= f.file_field :photos,
+     
+      <%# f.file_field :photos,
                         required: true,
                         multiple: true,
                         direct_upload: true%>
+      <div class="image-upload">
+        <label for="file-input">
+          <span class="fas fa-camera tag"> Upload your pictures</span>
+        </label>
+        <%= f.file_field :photos,
+                        id:"file-input",
+                        required: true,
+                        multiple: true,
+                        direct_upload: true%>
+      </div>
     </div>
   </div>
   <div>
     <%= f.button :submit, :class => "search-button-info button-small" %>
   </div>
 <% end %>
+
