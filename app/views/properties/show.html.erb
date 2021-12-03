@@ -19,8 +19,8 @@
               <% end %>
     <div class="show-tag"><i class="fas fa-map-marker"></i>&#160;&#160;<%= @property.address %></div>
 
-    <div class="show-tag"><i class="far fa-square"></i>&#160; Land surface: &#160;&#160;<%= number_with_delimiter(@property.land_surface, :delimiter => ',') %>m2</div>
-    <div class="show-tag"><i class="fas fa-square"></i>&#160; Living space: &#160;&#160;<%= number_with_delimiter(@property.living_space, :delimiter => ',') %>m2</div>
+    <div class="show-tag"><i class="far fa-square"></i>&#160; Land surface: &#160;&#160;<%= number_with_delimiter(@property.land_surface, :delimiter => ',') %>&#160;m2</div>
+    <div class="show-tag"><i class="fas fa-square"></i>&#160; Living space: &#160;&#160;<%= number_with_delimiter(@property.living_space, :delimiter => ',') %>&#160;m2</div>
     <div class="show-tag"><i class="fas fa-bed">  </i>&#160;Bedrooms:&#160;&#160;<%= @property.bedrooms %></div>
     <div class="show-tag"><i class="fas fa-bath">  </i>&#160;Bathrooms:&#160;&#160;<%= @property.bathroom %></div>
     <div class="show-tag"><i class="fas fa-parking">  </i>&#160;Parking Spaces:&#160;&#160;<%= @property.parking_space %></div>
@@ -33,7 +33,7 @@
     <% end %>
     </div>
 
-    <div class="show-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(@property.price, :delimiter => ',') %>MUR</div>
+    <div class="show-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(@property.price, :delimiter => ',') %>&#160;MUR</div>
     <% if current_user == @property.owner %>
       <div class="card-edit">
         <% if policy(@property).destroy? %>
@@ -72,9 +72,10 @@
   <% end %>
   <% @slots.each do |slot| %>
     <div class="card-slot">
-      <p><%= slot.date.to_formatted_s(:day_date_comma_month)%></p>
-      <i class="fas fa-at"></i>
-      <p><%= slot.date.to_formatted_s(:time)%></p>
+      <div class="text-slot"><%= slot.date.to_formatted_s(:day)%></div>
+      <div class="text-slot"><%= slot.date.to_formatted_s(:date_month)%></div>
+      <div class="text-slot"><%= slot.date.to_formatted_s(:year)%></div>
+      <div class="text-time-slot"><%= slot.date.to_formatted_s(:time)%></div>
       <% if policy(slot).destroy? %>
         <%= link_to '', slot_path(slot), class:"fas fa-trash-alt", method: :delete %>
       <% end %>
