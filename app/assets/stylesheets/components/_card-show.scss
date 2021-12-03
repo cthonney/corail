@@ -54,7 +54,7 @@
 .card-slot {
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  padding: 25px;
+  padding: 40px;
   margin: 10px;
   border-radius: 50%;
   border-style: solid;
@@ -152,3 +152,17 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+
+.text-slot {
+  font-size: 18px;
+  color: black;
+  font-weight: lighter;
+}
+
+.text-time-slot {
+  font-size: 25px;
+  color: black;
+  font-weight: lighter;
+}
+
