@@ -50,3 +50,30 @@
   padding: 30px;
 }
 
+.nav-link {
+  background-color: $corailnav;
+  margin-right: 20px;
+  width: 200px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: $corail;
+  color: $teal-green;
+}
+
+.nav-link.active {
+  background-color: $teal-green !important;
+  color: white !important;
+}
+
+.nav-tabs {
+  padding: 20px;
+  border-bottom: 3px solid #dee2e6;;
+}
