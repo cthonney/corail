@@ -1,5 +1,9 @@
 Time::DATE_FORMATS[:month_day_comma_year] = "%B %e, %Y" # January 28, 2015
-Time::DATE_FORMATS[:day_date_comma_month] = "%A %e, %m"
+Time::DATE_FORMATS[:day_date_comma_month] = "%A %e, %M"
+# day
+Time::DATE_FORMATS[:day] = "%A"
+Time::DATE_FORMATS[:date_month] = "%e %B"
+Time::DATE_FORMATS[:year] = "%Y"
 
 
 
