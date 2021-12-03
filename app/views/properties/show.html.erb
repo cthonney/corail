@@ -81,7 +81,7 @@
       <% end %>
       <%# if policy(@booking).create? %>
       <% if current_user != @property.owner %>
-        <%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-sm m-2", method: :post %>
+        <%= link_to "BOOK VISIT", property_bookings_path(@property, slot_id:slot.id), class:"btn btn-primary btn-sm", method: :post %>
       <% end %>
     </div>
   <% end %>
