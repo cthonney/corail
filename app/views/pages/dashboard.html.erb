@@ -32,12 +32,47 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div class="tab-pane active" id="properties" role="tabpanel" aria-labelledby="properties-tab">current_user.properties.last</div>
+    <div class="tab-pane active" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+      <div class="cards-dashboard-container">
+        <% current_user.properties.each do |property| %>
+          <div class="dashboard-card">
+            <%= cl_image_tag(property.photos.first.key, class:"dashboard-card-photo")%>
+            <div><i class="fas fa-map-marker">&#160;&#160;</i><%= property.address %></div>
+            <div><i class="fas fa-coins">&#160;&#160;</i><%= number_with_delimiter(property.price, :delimiter => ',') %> MUR</div>
+            <%= link_to 'Show', property, class: "search-button-info button-small"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-    <div class="tab-pane" id="slots" role="tabpanel" aria-labelledby="slots-tab">...</div>
+    <div class="tab-pane" id="slots" role="tabpanel" aria-labelledby="slots-tab">
+      <div class="cards-dashboard-container">
+        <% current_user.slots.each do |slot| %>
+          <div class="dashboard-card">
+            <%= cl_image_tag(slot.property.photos.first.key, class:"dashboard-card-photo")%>
+            <div><i class="fas fa-map-marker">&#160;&#160;</i><%=slot.property.address %></div>
+            <div><%= slot.date %></div>
+            <%= link_to 'Show', slot.property, class: "search-button-info button-small"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-    <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
 
-    <div class="tab-pane" id="visits" role="tabpanel" aria-labelledby="visits-tab">...</div>
+    <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+      <div class="cards-dashboard-container">
+        <% raise current_user.messages.each do |message| %>
+          <div class="dashboard-card">
+            <%= cl_image_tag(message.first.property.photos.first.key, class:"dashboard-card-photo")%>
+
+            <%= link_to 'Show', chatroom, class: "search-button-info button-small"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="visits" role="tabpanel" aria-labelledby="visits-tab">
+
+    </div>
   </div>
 </div>
