@@ -59,21 +59,23 @@ property15 = Property.create(description: "Magnifique Appartement avec vue sur l
 
 puts "Created #{Property.count} properties"
 
-property1.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['house'])), filename: "house1.png")
+property1.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "house1.png")
 property2.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "villa1.png")
-property3.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['flat'])), filename: "flat1.png")
-property4.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['house'])), filename: "house2.png")
+property3.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['apartment'])), filename: "flat1.png")
+property4.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "house2.png")
 property5.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "villa2.png")
-property6.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['flat'])), filename: "flat2.png")
-property7.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['house'])), filename: "house3.png")
+property6.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['apartment'])), filename: "flat2.png")
+property7.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "house3.png")
 property8.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "villa3.png")
-property9.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['flat'])), filename: "flat3.png")
-property10.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['house'])), filename: "house4.png")
+property9.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['apartment'])), filename: "flat3.png")
+property10.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "house4.png")
 property11.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "villa4.png")
-property12.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['flat'])), filename: "flat4.png")
-property13.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['house'])), filename: "house5.png")
+property12.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['apartment'])), filename: "flat4.png")
+property13.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "house5.png")
 property14.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['villa'])), filename: "villa5.png")
-property15.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['flat'])), filename: "flat5.png")
+property15.photos.attach(io: URI.open(Faker::LoremFlickr.image(size: "640x480", search_terms: ['apartment'])), filename: "flat5.png")
+
+
 
 
 
