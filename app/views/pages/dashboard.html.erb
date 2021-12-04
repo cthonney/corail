@@ -16,19 +16,19 @@
   <div class="container-modal">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="properties-tab" data-toggle="tab" href="#properties" role="tab" aria-controls="properties" aria-selected="true">Properties</a>
+        <a class="nav-link active" id="properties-tab" data-toggle="tab" href="#properties" role="tab" aria-controls="properties" aria-selected="true">My Properties</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="slots-tab" data-toggle="tab" href="#slots" role="tab" aria-controls="slots" aria-selected="false">Slots</a>
+        <a class="nav-link" id="slots-tab" data-toggle="tab" href="#slots" role="tab" aria-controls="slots" aria-selected="false">My Slots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="messages-sent-tab" data-toggle="tab" href="#messages-sent" role="tab" aria-controls="messages-sent" aria-selected="false">Property Messages</a>
+        <a class="nav-link" id="messages-sent-tab" data-toggle="tab" href="#messages-sent" role="tab" aria-controls="messages-sent" aria-selected="false">Property Contacts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">Visits</a>
+        <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">My Buying Visits</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Seller Messages</a>
+        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">My Buying Messages</a>
       </li>
     </ul>
 
@@ -50,23 +50,25 @@
       <div class="tab-pane" id="slots" role="tabpanel" aria-labelledby="slots-tab">
         <div class="cards-dashboard-container">
           <% current_user.slots.each do |slot| %>
-            <div class="dashboard-card">
-              <%= cl_image_tag(slot.property.photos.first.key, class:"dashboard-card-photo")%>
-              <div><i class="fas fa-map-marker">&#160;&#160;</i><%=slot.property.address %></div>
-              <div><%= slot.date.to_formatted_s(:day) %>&#160;<%= slot.date.to_formatted_s(:date_month) %>&#160;<%= slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
-              <%= link_to 'Show', slot.property, class: "search-button-info button-small"%>
-              <button type="button" class="search-button-info button-small" data-toggle="modal" data-target=".bd-example-modal-sm">See Visits</button>
-              <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <h1>Visits booked on this slot :</h1>
-                    <% slot.bookings.each do |booking| %>
-                      <div class="cards-dashboard-modal">
-                        <div><strong>Date:&#160;</strong><%= booking.slot.date.to_formatted_s(:day) %>&#160;<%= booking.slot.date.to_formatted_s(:date_month) %>&#160;<%= booking.slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
-                        <div><strong>Booked with:&#160;</strong><%= booking.buyer.name %> - <%= booking.buyer.surname %></div>
-                      </div>
-                    <% end %>
-                  </div>
+            <div class="dashboard-slot d-block">
+              <div class="info-slot d-flex justify-content-between align-items-center">
+                <%= cl_image_tag(slot.property.photos.first.key, class:"dashboard-card-photo-slot")%>
+                <div><i class="fas fa-map-marker">&#160;&#160;</i><%=slot.property.address %></div>
+                <div><%= slot.date.to_formatted_s(:day) %>&#160;<%= slot.date.to_formatted_s(:date_month) %>&#160;<%= slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
+                <%= link_to 'Show', slot.property, class: "search-button-info button-small"%>
+              </div>
+              <hr>
+              <div class="list-slot">
+                <div class="grid-item" style="background-color: #d8d8d8;width: 144px;height: 80px;font-size: medium;color: #363636;/* display: flex; *//* text-align: center; */line-height: 40px;">
+                  <p><%= slot.bookings.count %> visits</p>
+                </div>
+                <div class="w-100">
+                  <% slot.bookings.each do |booking| %>
+                    <div class="cards-dashboard-modal d-flex w-100 justify-content-between">
+                      <div><strong>Date:&#160;</strong><%= booking.slot.date.to_formatted_s(:day) %>&#160;<%= booking.slot.date.to_formatted_s(:date_month) %>&#160;<%= booking.slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
+                      <div class="ml-5"><strong>Booked with:&#160;</strong><%= booking.buyer.name %> - <%= booking.buyer.surname %></div>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
