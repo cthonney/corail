@@ -49,9 +49,9 @@ property8 = Property.create(description: "Magnifique Appartement avec vue sur la
 property9 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "Flat", price: "10000000", living_space: "160", land_surface: "160", address: "Phoenix, Mauritius", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user3.id)
 property10 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "House", price: "20000000", living_space: "160", land_surface: "160", address: "Phoenix, Mauritius", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user3.id)
 property11 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "Villa", price: "10000000", living_space: "160", land_surface: "160", address: "Phoenix, Mauritius", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user3.id)
-property12 = Property.create(description: "Magnifique Villa avec vue sur la mer", property_type: "Villa", price: "18000000", living_space: "800", land_surface: "1600", address: "Port Louis", parking_space: 3, pool: true, room: 4, bedrooms: 4, bathroom: 2, sea_view: true, user_id: user3.id)
-property13 = Property.create(description: "Magnifique Flat avec vue sur la ville", property_type: "Flat", price: "22000000", living_space: "160", land_surface: "160", address: "Blue bay", parking_space: 3, pool: true, room: 4, bedrooms: 4, bathroom: 2, sea_view: true, user_id: user3.id)
-property14 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "House", price: "80000000", living_space: "160", land_surface: "160", address: "Flic en Flac", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user3.id)
+property12 = Property.create(description: "Magnifique Villa avec vue sur la mer", property_type: "Villa", price: "18000000", living_space: "800", land_surface: "1600", address: "Port Louis", parking_space: 3, pool: true, room: 4, bedrooms: 4, bathroom: 2, sea_view: true, user_id: user1.id)
+property13 = Property.create(description: "Magnifique Flat avec vue sur la ville", property_type: "Flat", price: "22000000", living_space: "160", land_surface: "160", address: "Blue bay", parking_space: 3, pool: true, room: 4, bedrooms: 4, bathroom: 2, sea_view: true, user_id: user2.id)
+property14 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "House", price: "80000000", living_space: "160", land_surface: "160", address: "Flic en Flac", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user4.id)
 property15 = Property.create(description: "Magnifique Appartement avec vue sur la ville", property_type: "Villa", price: "10000000", living_space: "160", land_surface: "160", address: "Grand-baie", parking_space: 4, pool: true, room: 4, bedrooms: 2, bathroom: 1, sea_view: false, user_id: user3.id)
 
 
@@ -112,7 +112,7 @@ puts "Created #{Slot.count} slots"
 puts "Attached slots to properties"
 
 #Create Bookings
-booking1 = Booking
+
 
 puts "Created #{Slot.count} slots"
 
