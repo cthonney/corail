@@ -102,3 +102,23 @@
   height: 90%;
   width: auto;
 }
+
+.modal-content {
+  background-color: $corailnav;
+  width: 800px !important;
+  border-radius: 8px;
+  border: 0px;
+  padding: 10px;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cards-dashboard-modal {
+  background-color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 4px;
+  width: 90%;
+  padding: 5px;
+}

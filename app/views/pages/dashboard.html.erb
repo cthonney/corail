@@ -59,12 +59,18 @@
               <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
                   <div class="modal-content">
-                    ...
+                    <h1>Visits booked on this slot :</h1>
+                    <% slot.bookings.each do |booking| %>
+                      <div class="cards-dashboard-modal">
+                        <div><strong>Date:&#160;</strong><%= booking.slot.date.to_formatted_s(:day) %>&#160;<%= booking.slot.date.to_formatted_s(:date_month) %>&#160;<%= booking.slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
+                        <div><strong>Booked with:&#160;</strong><%= booking.buyer.name %> - <%= booking.buyer.surname %></div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
             </div>
-          <% end %>w
+          <% end %>
         </div>
       </div>
 
