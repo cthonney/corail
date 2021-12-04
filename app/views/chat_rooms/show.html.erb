@@ -1,5 +1,5 @@
 <div class="p-5 mx-auto" style="width: 800px;" >
-  <h1>Chatroom: <%= @chat_room.title %></h1>
+  <h1><%= @chat_room.title %></h1>
   <div class= "boxchat">
     <div id="messages" data-chat_room-id="<%= @chat_room.id %>">
       <% @chat_room.messages.each do |message| %>
