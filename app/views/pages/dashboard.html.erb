@@ -23,10 +23,13 @@
       <a class="nav-link" id="slots-tab" data-toggle="tab" href="#slots" role="tab" aria-controls="slots" aria-selected="false">Slots</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
+      <a class="nav-link" id="messages-sent-tab" data-toggle="tab" href="#messages-sent" role="tab" aria-controls="messages-sent" aria-selected="false">Property Messages</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">Visits</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Seller Messages</a>
     </li>
   </ul>
 
@@ -54,18 +57,30 @@
             <div><%= slot.date %></div>
             <%= link_to 'Show', slot.property, class: "search-button-info button-small"%>
           </div>
-        <% end %>
+        <% end %>w
       </div>
     </div>
 
 
+    <div class="tab-pane" id="messages-sent" role="tabpanel" aria-labelledby="messages-tab-sent">
+      <div class="cards-dashboard-container">
+        <% @chat_rooms_properties.first.each do |chatroom| %>
+          <div class="dashboard-card">
+            <%= cl_image_tag(chatroom.messages.first.property.photos.first.key, class:"dashboard-card-photo")%>
+            <%= chatroom.title %>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
       <div class="cards-dashboard-container">
-        <% raise current_user.messages.each do |message| %>
+        <% @chat_rooms_messages.each do |chatroom| %>
           <div class="dashboard-card">
-            <%= cl_image_tag(message.first.property.photos.first.key, class:"dashboard-card-photo")%>
+            <%= cl_image_tag(chatroom.messages.first.property.photos.first.key, class:"dashboard-card-photo")%>
+            <%= chatroom.title %>
 
-            <%= link_to 'Show', chatroom, class: "search-button-info button-small"%>
           </div>
         <% end %>
       </div>
