@@ -17,14 +17,14 @@
   width: 40px;
 }
 
-.nav-link {
+.button-navbar {
   cursor: pointer;
   display: inline-block;
   border-radius: 25px;
   color: white;
   border: 1px solid white;
-  padding-bottom: 30px;
-  height: 25px;
+  padding: 10px;
+  height: 45px;
   width: auto;
   font-size: medium;
   text-align: center;
@@ -35,7 +35,8 @@
   width: 40px;
 }
 
-.nav-link:hover {
-  background-color: $corail;
+.button-navbar:hover {
+  background-color:$corail;
   color: white;
+  text-decoration: none;
 }

@@ -1,77 +1,134 @@
-<div class="container-dash">
-<%# #Button to My Property %>
+<div class="container-dashboard">
+  <div class="container-welcome-4cards">
+    <div class="container-welcome">
+      <h1>Welcome <strong><%= current_user.surname %>,</strong></h1>
+      <p>Bienvenue sur ton dashboard, retrouve ici toutes les informations nécessaires à la gestion de ta propriété en vente ou de ta future propriété.</p>
+    </div>
+
+    <div class="grid-container-4cards">
+      <div class="grid-item"><h1><%= current_user.properties.count %></h1>&#160;<p>propert<%= current_user.properties.count>1 ? "ies" : "y" %></p></div>
+      <div class="grid-item"><h1><%= current_user.slots.count %></h1>&#160;<p>slot<%= current_user.slots.count>1 ? "s" : "" %></div>
+      <div class="grid-item"><h1><%= current_user.chat_rooms.count %></h1>&#160;<p>message<%= current_user.chat_rooms.count>1 ? "s" : "" %></div>
+      <div class="grid-item"><h1><%= current_user.bookings.count %></h1>&#160;<p>booking<%= current_user.bookings.count>1 ? "s" : "" %></div>
+    </div>
+  </div>
+
+  <div class="container-modal">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="properties-tab" data-toggle="tab" href="#properties" role="tab" aria-controls="properties" aria-selected="true">My Properties</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="slots-tab" data-toggle="tab" href="#slots" role="tab" aria-controls="slots" aria-selected="false">My Slots</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="messages-sent-tab" data-toggle="tab" href="#messages-sent" role="tab" aria-controls="messages-sent" aria-selected="false">Property Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">My Buying Visits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">My Buying Messages</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+        <div class="cards-dashboard-container">
+          <% current_user.properties.each do |property| %>
+            <div class="dashboard-card">
+              <%= cl_image_tag(property.photos.first.key, class:"dashboard-card-photo")%>
+              <div><i class="fas fa-map-marker">&#160;&#160;</i><%= property.address %></div>
+              <div><i class="fas fa-coins">&#160;&#160;</i><%= number_with_delimiter(property.price, :delimiter => ',') %> MUR</div>
+              <%= link_to 'Show', property, class: "search-button-info button-small"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="slots" role="tabpanel" aria-labelledby="slots-tab">
+        <div class="cards-dashboard-container">
+          <% current_user.slots.each do |slot| %>
+            <div class="dashboard-slot d-block">
+              <div class="info-slot d-flex justify-content-between align-items-center">
+                <%= cl_image_tag(slot.property.photos.first.key, class:"dashboard-card-photo-slot")%>
+                <div><i class="fas fa-map-marker">&#160;&#160;</i><%=slot.property.address %></div>
+                <div><%= slot.date.to_formatted_s(:day) %>&#160;<%= slot.date.to_formatted_s(:date_month) %>&#160;<%= slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
+                <%= link_to 'Show', slot.property, class: "search-button-info button-small"%>
+              </div>
+              <hr>
+              <div class="list-slot">
+                <div class="grid-item" style="background-color: #d8d8d8;width: 144px;height: 80px;font-size: medium;color: #363636;/* display: flex; *//* text-align: center; */line-height: 40px;">
+                  <p><%= slot.bookings.count %> visits</p>
+                </div>
+                <div class="w-100">
+                  <% slot.bookings.each do |booking| %>
+                    <div class="cards-dashboard-modal d-flex w-100 justify-content-between">
+                      <div><strong>Date:&#160;</strong><%= booking.slot.date.to_formatted_s(:day) %>&#160;<%= booking.slot.date.to_formatted_s(:date_month) %>&#160;<%= booking.slot.date.to_formatted_s(:year) %> - <%= slot.date.to_formatted_s(:time) %></div>
+                      <div class="ml-5"><strong>Booked with:&#160;</strong><%= booking.buyer.name %> - <%= booking.buyer.surname %></div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
 
-  <div class="cards-dash">
-    <h2 id="MyProperty">My Property</h2>
-<table>
-  <tr>
-    <th>Type</th>
-    <th>Price</th>
-    <th>Living space</th>
-    <th>Location</th>
-  </tr>
-  <% @properties.each do |property| %>
-    <tr>
-      <td><%= property.property_type %></td>
-      <td><%= property.price %>MUR</td>
-      <td><%= property.living_space %>m2</td>
-      <td><%= property.address %></td>
-      <td><%= link_to 'Show', property %></td>
-    </tr>
-  <% end %>
-</table>
-  </div>
-  <div class="cards-dash">
-    <h2 id="My Messages">My Messages</h2>
-<table>
-  <tr>
-    <% @chat_rooms.each do |chat| %>
-      <td><%= chat.title %></td>
-      <td><%= link_to "Open chatroom", property_chat_room_path(chat.messages.first.property, chat) %></td>
-    </tr>
-  <% end %>
-</table>
-  </div>
-  <div class="cards-dash">
-    <h2 id="My Slots">My slots</h2>
-<table>
-  <tr>
-    <th>Property</th>
-    <th>Location</th>
-    <th>Date</th>
-    <th>Count Booking</th>
-    <th>Details Booking</th>
-  </tr>
-  <% @slots.each do |slot| %>
-    <tr>
-      <td><%= slot.property.id %></td>
-      <td><%= slot.property.address %></td>
-      <td><%= slot.date %></td>
-      <td><%= slot.bookings.count %></td>
-      <td><%= link_to "Bookings", slot_bookings_path(slot) %></td>
-    </tr>
-  <% end %>
-</table>
-  </div>
-  <div class="cards-dash">
-  <h2 id="My Bookings">Bookings Visit</h2>
-    <table>
-  <tr>
-    <th>Property</th>
-    <th>Location</th>
-    <th>Date</th>
-    <th>Show Property & Message</th>
-  </tr>
-  <% @bookings.each do |booking| %>
-    <tr>
-      <td><%= booking.slot.property.id %></td>
-      <td><%= booking.slot.property.address %></td>
-      <td><%= booking.slot.date %></td>
-      <td><%= link_to "Show", property_path(booking.slot.property.id) %></td>
+      <div class="tab-pane" id="messages-sent" role="tabpanel" aria-labelledby="messages-tab-sent">
+        <div class="cards-dashboard-container">
+          <% @chat_rooms_properties.first.each do |chatroom| %>
+            <div class="dashboard-card">
+              <%= cl_image_tag(chatroom.messages.first.property.photos.first.key, class:"dashboard-card-photo")%>
+              <div>
+                <strong><%= chatroom.messages.first.user.name %>&#160;<%= chatroom.messages.first.user.surname %></strong> sent you a message
+              </div>
+              <div>
+                <%= chatroom.messages.last.content %>
+              </div>
+              <div>
+                <%= chatroom.messages.last.created_at.to_formatted_s(:day) %>&#160;<%= chatroom.messages.last.created_at.to_formatted_s(:date_month) %>&#160;<%= chatroom.messages.last.created_at.to_formatted_s(:year) %>
+              </div>
+              <%= link_to 'Show', property_chat_room_path(chatroom.messages.first.property, chatroom), class: "search-button-info button-small"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
-    </tr>
-  <% end %>
-</table>
+      <div class="tab-pane" id="visits" role="tabpanel" aria-labelledby="visits-tab">
+        <div class="cards-dashboard-container">
+          <% @bookings.each do |booking| %>
+            <div class="dashboard-card">
+              <%= cl_image_tag(booking.slot.property.photos.first.key, class:"dashboard-card-photo")%>
+              <div><i class="fas fa-map-marker">&#160;&#160;</i><%= booking.slot.property.address %></div>
+              <div><%= booking.slot.date.to_formatted_s(:day) %>&#160;<%= booking.slot.date.to_formatted_s(:date_month) %>&#160;<%= booking.slot.date.to_formatted_s(:year) %> - <%= booking.slot.date.to_formatted_s(:time) %></div>
+              <%= link_to 'See Property', booking.slot.property, class: "search-button-info button-small"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+        <div class="cards-dashboard-container">
+          <% @chat_rooms_messages.each do |chatroom| %>
+            <div class="dashboard-card">
+              <%= cl_image_tag(chatroom.messages.first.property.photos.first.key, class:"dashboard-card-photo")%>
+              <div>
+                You sent a message to <strong><%= chatroom.messages.first.property.owner.name %>&#160;<%= chatroom.messages.first.property.owner.surname %></strong>
+              </div>
+              <div>
+                <%= chatroom.messages.last.content %>
+              </div>
+              <div>
+                <%= chatroom.messages.last.created_at.to_formatted_s(:day) %>&#160;<%= chatroom.messages.last.created_at.to_formatted_s(:date_month) %>&#160;<%= chatroom.messages.last.created_at.to_formatted_s(:year) %>
+              </div>
+              <%= link_to 'Show', property_chat_room_path(chatroom.messages.first.property, chatroom), class: "search-button-info button-small"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
