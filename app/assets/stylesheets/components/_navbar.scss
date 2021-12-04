@@ -5,6 +5,8 @@
   width: 100%;
   //border-bottom: 5px solid $misty-blue;
   height: 60px;
+  top: 0;
+  z-index: 999;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -30,12 +32,10 @@
 
 .avatar {
   border: 3px solid white;
-  width: 40px
+  width: 40px;
 }
 
-
-
 .nav-link:hover {
-  background-color:$corail;
+  background-color: $corail;
   color: white;
 }
