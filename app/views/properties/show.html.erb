@@ -8,50 +8,48 @@
 <div class="container-show">
   <div class="card-show">
     <% case @property.property_type %>
-              <% when "Villa" %>
-              <div class="property-type-tag-villa"><%= @property.property_type %></div>
-              <% when "House" %>
-              <div class="property-type-tag-house"><%= @property.property_type %></div>
-              <% when "Bungalow" %>
-              <div class="property-type-tag-bungalow"><%= @property.property_type %></div>
-              <% when "Flat" %>
-              <div class="property-type-tag-flat"><%= @property.property_type %></div>
-              <% end %>
-    <div class="show-tag"><i class="fas fa-map-marker"></i>&#160;&#160;<%= @property.address %></div>
-
-    <div class="show-tag"><i class="far fa-square"></i>&#160; Land surface: &#160;&#160;<%= number_with_delimiter(@property.land_surface, :delimiter => ',') %>&#160;m2</div>
-    <div class="show-tag"><i class="fas fa-square"></i>&#160; Living space: &#160;&#160;<%= number_with_delimiter(@property.living_space, :delimiter => ',') %>&#160;m2</div>
-    <div class="show-tag"><i class="fas fa-bed">  </i>&#160;Bedrooms:&#160;&#160;<%= @property.bedrooms %></div>
-    <div class="show-tag"><i class="fas fa-bath">  </i>&#160;Bathrooms:&#160;&#160;<%= @property.bathroom %></div>
-    <div class="show-tag"><i class="fas fa-parking">  </i>&#160;Parking Spaces:&#160;&#160;<%= @property.parking_space %></div>
+    <% when "Villa" %>
+    <div class="property-type-tag-villa"><%= @property.property_type %></div>
+    <% when "House" %>
+    <div class="property-type-tag-house"><%= @property.property_type %></div>
+    <% when "Bungalow" %>
+    <div class="property-type-tag-bungalow"><%= @property.property_type %></div>
+    <% when "Flat" %>
+    <div class="property-type-tag-flat"><%= @property.property_type %></div>
+  <% end %>
+  <div class="show-tag"><i class="fas fa-map-marker"></i>&#160;&#160;<%= @property.address %></div>
+  <div class="show-tag"><i class="far fa-square"></i>&#160; Land surface: &#160;&#160;<%= number_with_delimiter(@property.land_surface, :delimiter => ',') %>&#160;m2</div>
+  <div class="show-tag"><i class="fas fa-square"></i>&#160; Living space: &#160;&#160;<%= number_with_delimiter(@property.living_space, :delimiter => ',') %>&#160;m2</div>
+  <div class="show-tag"><i class="fas fa-bed">  </i>&#160;Bedrooms:&#160;&#160;<%= @property.bedrooms %></div>
+  <div class="show-tag"><i class="fas fa-bath">  </i>&#160;Bathrooms:&#160;&#160;<%= @property.bathroom %></div>
+  <div class="show-tag"><i class="fas fa-parking">  </i>&#160;Parking Spaces:&#160;&#160;<%= @property.parking_space %></div>
   <div class="tag-form-split-2col">
-   <%if @property.sea_view == true %>
+    <%if @property.sea_view == true %>
       <div class="show-tag2"><i class="fas fa-water"></i>&#160;Sea view</div>
     <% end %>
     <%if @property.pool == true %>
       <div class="show-tag2"><i class="fas fa-swimming-pool"></i>&#160;Pool</div>
     <% end %>
+  </div>
+  <div class="show-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(@property.price, :delimiter => ',') %>&#160;MUR</div>
+  <% if current_user == @property.owner %>
+    <div class="card-edit">
+      <% if policy(@property).destroy? %>
+        <%= link_to '', @property, :class => "fas fa-trash-alt",  method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <% if policy(@property).edit? %>
+        <%= link_to '', edit_property_path, class: "fas fa-pencil-alt" %>
+      <% end %>
     </div>
-
-    <div class="show-tag"><i class="fas fa-coins"></i>&#160;&#160;<%= number_with_delimiter(@property.price, :delimiter => ',') %>&#160;MUR</div>
-    <% if current_user == @property.owner %>
-      <div class="card-edit">
-        <% if policy(@property).destroy? %>
-          <%= link_to '', @property, :class => "fas fa-trash-alt",  method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        <% if policy(@property).edit? %>
-          <%= link_to '', edit_property_path, class: "fas fa-pencil-alt" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="card-show" >
-    <p><%= @property.description %></p>
-  </div>
-  <div id="map" class="card-map"
+  <% end %>
+</div>
+<div class="card-show" >
+  <div class= "dsc"><%= @property.description %></div>
+</div>
+<div id="map" class="card-map"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+</div>
 </div>
 <div class="card-message">
   <% if current_user == @property.owner %>

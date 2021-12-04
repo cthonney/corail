@@ -34,3 +34,51 @@
   justify-content: space-around;
   flex: 1;
 }
+
+.chat-sender{
+
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom:5px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.chat-time{
+
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom:5px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.chat-content{
+  background: #f5f5f5;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom:5px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-around;
+  flex: 1;
+
+}
+
+.author{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // replace width:2000px with width:auto
+  width: auto;
+  border: 1px solid #e57f8460;
+  border-radius: 8px;
+  background: white;
+}

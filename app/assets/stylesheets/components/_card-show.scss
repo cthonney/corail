@@ -95,7 +95,7 @@
   width: 100%;
   padding: 5px;
   border-radius: 8px;
-  color: black;
+  color: rgba(0, 0, 0, 0.712);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
 
 .show-tag > text {
   font-size: 20px;
-  color: black;
+  color: rgba(0, 0, 0, 0.712);
   font-weight: lighter;
 }
 
@@ -124,7 +124,7 @@
   min-width: 48%;
   padding: 5px;
   border-radius: 8px;
-  color: black;
+  color: rgba(0, 0, 0, 0.712);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -142,7 +142,7 @@
   width: 100%;
   padding: 5px;
   border-radius: 8px;
-  color: black;
+  color: rgba(0, 0, 0, 0.712);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -156,13 +156,19 @@
 
 .text-slot {
   font-size: 18px;
-  color: black;
+  color: rgba(0, 0, 0, 0.712);
   font-weight: lighter;
 }
 
 .text-time-slot {
   font-size: 25px;
-  color: black;
+  color: rgba(0, 0, 0, 0.712);
   font-weight: lighter;
 }
 
+.dsc {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.781);
+  font-weight: lighter;
+
+}
