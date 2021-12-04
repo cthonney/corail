@@ -4,18 +4,18 @@
     <div id="messages" data-chat_room-id="<%= @chat_room.id %>">
       <% @chat_room.messages.each do |message| %>
         <div class="message-container" id="message-<%= message.id %>">
-          <i class="author">
-            <span><%= message.user.surname %></span>
-            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-          </i>
-          <p><%= message.content %></p>
+          <div class="author">
+            <div class="chat-sender">Sender:&#160;<%= message.user.surname + " " + message.user.name%></div>
+            <div class="chat-time">Time:&#160;<%= message.created_at.strftime("%a %b %e at %l:%M%p") %></div>
+          </div>
+          <div class="chat-content">Message:&#160;<%= message.content %></div>
         </div>
       <% end %>
     </div>
   </div>
   <div class= "boxtext">
     <%= simple_form_for [ @property, @chat_room, @message ] do |f| %>
-      <%= f.input :content, input_html: {rows: 5, cols: 10}, label: false, placeholder: "Message to owner" %>
+      <%= f.input :content, input_html: {rows: 5, cols: 10}, label: false, placeholder: "Write your message" %>
       <%= f.submit "Send!", :class => "btn btn-primary"  %>
     <% end %>
   </div>
